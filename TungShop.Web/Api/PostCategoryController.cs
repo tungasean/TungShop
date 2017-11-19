@@ -24,20 +24,11 @@ namespace TungShop.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                HttpResponseMessage reponse = null;
-                if (ModelState.IsValid)
-                {
 
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                var listCategory = _postCategoryService.GetAll();
+                _postCategoryService.Save();
 
-                }
-                else
-                {
-                    var listCategory = _postCategoryService.GetAll();
-                    _postCategoryService.Save();
-
-                    reponse = request.CreateResponse(HttpStatusCode.OK, listCategory);
-                }
+                HttpResponseMessage reponse = request.CreateResponse(HttpStatusCode.OK, listCategory);
                 return reponse;
             });
         }
