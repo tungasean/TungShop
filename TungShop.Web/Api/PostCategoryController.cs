@@ -4,9 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using TungShop.Model.Models;
 using TungShop.Service;
 using TungShop.Web.Infrastructure.Core;
+using TungShop.Web.Infrastructure.Extensions;
+using TungShop.Web.Models;
 
 namespace TungShop.Web.Api
 {
@@ -26,14 +29,16 @@ namespace TungShop.Web.Api
             {
 
                 var listCategory = _postCategoryService.GetAll();
-                _postCategoryService.Save();
 
-                HttpResponseMessage reponse = request.CreateResponse(HttpStatusCode.OK, listCategory);
+                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+
+                HttpResponseMessage reponse = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
                 return reponse;
             });
         }
 
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -46,7 +51,10 @@ namespace TungShop.Web.Api
                 }
                 else
                 {
-                    var category = _postCategoryService.Add(postCategory);
+                    PostCategory newPostCategory = new PostCategory();
+                    newPostCategory.UpdatePostCategory(postCategoryVm);
+
+                    var category = _postCategoryService.Add(newPostCategory);
                     _postCategoryService.Save();
 
                     reponse = request.CreateResponse(HttpStatusCode.Created, category);
@@ -54,8 +62,8 @@ namespace TungShop.Web.Api
                 return reponse;
             });
         }
-
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -68,7 +76,10 @@ namespace TungShop.Web.Api
                 }
                 else
                 {
-                    _postCategoryService.Update(postCategory);
+                    var postCategoryDb = _postCategoryService.GetById(postCategoryVm.ID);
+                    postCategoryDb.UpdatePostCategory(postCategoryVm);
+
+                    _postCategoryService.Update(postCategoryDb);
                     _postCategoryService.Save();
 
                     reponse = request.CreateResponse(HttpStatusCode.OK);
@@ -77,6 +88,7 @@ namespace TungShop.Web.Api
             });
         }
 
+        [Route("delete")]
         public HttpResponseMessage Dalete(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>
