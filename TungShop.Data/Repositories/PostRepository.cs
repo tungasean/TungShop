@@ -20,6 +20,7 @@ namespace TungShop.Data.Repositories
 
         public IEnumerable<Post> GetAllByTag(string tag, int pageIndex, int pageSize, out int totalRow)
         {
+            //lingque de phan trang
             var query = from p in DbContext.Posts
                         join pt in DbContext.PostTags
                         on p.ID equals pt.PostID

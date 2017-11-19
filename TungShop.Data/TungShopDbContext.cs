@@ -34,6 +34,7 @@ namespace TungShop.Data
 
         public DbSet<Tag> Tags { set; get; }
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
+        public DbSet<Error> Errors { set; get; }
 
 
         protected override void OnModelCreating(DbModelBuilder builder) // ghi đè phuong thức khởi tạo DB của DbContext lúc khỏi tạo entity framework
