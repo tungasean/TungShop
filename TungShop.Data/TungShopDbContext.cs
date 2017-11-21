@@ -4,11 +4,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
 using TungShop.Model.Models;
 
 namespace TungShop.Data
 {
-    public class TungShopDbContext : DbContext
+    public class TungShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public TungShopDbContext() : base("TungShopConnection")
         {
@@ -36,10 +37,16 @@ namespace TungShop.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
 
+        public static TungShopDbContext Create()
+        {
+            return new TungShopDbContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder builder) // ghi đè phuong thức khởi tạo DB của DbContext lúc khỏi tạo entity framework
         {
-            
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
+
         }
     }
 }
