@@ -4,4 +4,4 @@
     function productAddController() {
 
     }
-})(angular.module('tedushop.products'));
+})(angular.module('tungshop.products'));
