@@ -5,6 +5,7 @@ namespace TungShop.Web.Infrastructure.Core
 {
     public class PaginationSet<T>
     {
+        // tao phan trang
         public int Page { set; get; }
 
         public int Count
