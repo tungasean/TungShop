@@ -22,19 +22,19 @@ namespace TungShop.Data.Migrations
             CreateProductCategorySample(context);
             //  This method will be called after migrating to the latest version.
 
-            //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeduShopDbContext()));
+            //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TungShopDbContext()));
 
-            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new TeduShopDbContext()));
+            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new TungShopDbContext()));
 
             //var user = new ApplicationUser()
             //{
-            //    UserName = "tedu",
-            //    Email = "tedu.international@gmail.com",
+            //    UserName = "tung",
+            //    Email = "tung.international@gmail.com",
             //    EmailConfirmed = true,
             //    BirthDay = DateTime.Now,
             //    FullName = "Technology Education"
 
-            //};
+            //};                                                 
 
             //manager.Create(user, "123654$");
 
@@ -44,7 +44,7 @@ namespace TungShop.Data.Migrations
             //    roleManager.Create(new IdentityRole { Name = "User" });
             //}
 
-            //var adminUser = manager.FindByEmail("tedu.international@gmail.com");
+            //var adminUser = manager.FindByEmail("tung.international@gmail.com");
 
             //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
 

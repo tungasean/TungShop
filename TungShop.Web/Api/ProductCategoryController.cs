@@ -14,6 +14,7 @@ using TungShop.Web.Infrastructure.Extensions;
 namespace TungShop.Web.Api
 {
     [RoutePrefix("api/productcategory")]
+    [Authorize]
     public class ProductCategoryController : ApiControllerBase
     {
         #region Initialize
