@@ -3,7 +3,10 @@
 (function () {
     angular.module('tungshop',
         ['tungshop.products',
+            'tungshop.application_groups',
             'tungshop.product_categories',
+            'tungshop.application_roles',
+            'tungshop.application_users',
             'tungshop.common'])
         .config(config)
         .config(configAuthentication);
@@ -27,6 +30,7 @@
                 templateUrl: "/app/components/home/homeView.html",
                 controller: "homeController"
             });
+
         $urlRouterProvider.otherwise('/login');
     }
     function configAuthentication($httpProvider) {

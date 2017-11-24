@@ -19,6 +19,10 @@ namespace TungShop.Web.Mappings
             Mapper.CreateMap<ProductCategory, ProductCategoryViewModel>();
             Mapper.CreateMap<Product, ProductViewModel>();
             Mapper.CreateMap<ProductTag, ProductTagViewModel>();
+
+            Mapper.CreateMap<ApplicationGroup, ApplicationGroupViewModel>();
+            Mapper.CreateMap<ApplicationRole, ApplicationRoleViewModel>();
+            Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>();
         }
     }
 }

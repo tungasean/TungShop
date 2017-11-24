@@ -13,8 +13,8 @@ namespace TungShop.Web.Infrastructure.Extensions
         {
             postCategory.ID = postCategoryVm.ID;
             postCategory.Name = postCategoryVm.Name;
-            postCategory.Alias = postCategoryVm.Alias;
             postCategory.Description = postCategoryVm.Description;
+            postCategory.Alias = postCategoryVm.Alias;
             postCategory.ParentID = postCategoryVm.ParentID;
             postCategory.DisplayOrder = postCategoryVm.DisplayOrder;
             postCategory.Image = postCategoryVm.Image;
@@ -27,8 +27,8 @@ namespace TungShop.Web.Infrastructure.Extensions
             postCategory.MetaKeyword = postCategoryVm.MetaKeyword;
             postCategory.MetaDescription = postCategoryVm.MetaDescription;
             postCategory.Status = postCategoryVm.Status;
-        }
 
+        }
         public static void UpdateProductCategory(this ProductCategory productCategory, ProductCategoryViewModel productCategoryVm)
         {
             productCategory.ID = productCategoryVm.ID;
@@ -49,20 +49,18 @@ namespace TungShop.Web.Infrastructure.Extensions
             productCategory.Status = productCategoryVm.Status;
 
         }
-
-
         public static void UpdatePost(this Post post, PostViewModel postVm)
         {
             post.ID = postVm.ID;
             post.Name = postVm.Name;
+            post.Description = postVm.Description;
             post.Alias = postVm.Alias;
             post.CategoryID = postVm.CategoryID;
-            post.Image = postVm.Image;
-            post.Description = postVm.Description;
             post.Content = postVm.Content;
+            post.Image = postVm.Image;
             post.HomeFlag = postVm.HomeFlag;
-            post.HotFlag = postVm.HotFlag;
             post.ViewCount = postVm.ViewCount;
+
             post.CreatedDate = postVm.CreatedDate;
             post.CreatedBy = postVm.CreatedBy;
             post.UpdatedDate = postVm.UpdatedDate;
@@ -70,6 +68,33 @@ namespace TungShop.Web.Infrastructure.Extensions
             post.MetaKeyword = postVm.MetaKeyword;
             post.MetaDescription = postVm.MetaDescription;
             post.Status = postVm.Status;
+        }
+        
+
+        public static void UpdateApplicationGroup(this ApplicationGroup appGroup, ApplicationGroupViewModel appGroupViewModel)
+        {
+            appGroup.ID = appGroupViewModel.ID;
+            appGroup.Name = appGroupViewModel.Name;
+        }
+
+        public static void UpdateApplicationRole(this ApplicationRole appRole, ApplicationRoleViewModel appRoleViewModel, string action = "add")
+        {
+            if (action == "update")
+                appRole.Id = appRoleViewModel.Id;
+            else
+                appRole.Id = Guid.NewGuid().ToString();
+            appRole.Name = appRoleViewModel.Name;
+            appRole.Description = appRoleViewModel.Description;
+        }
+        public static void UpdateUser(this ApplicationUser appUser, ApplicationUserViewModel appUserViewModel, string action = "add")
+        {
+
+            appUser.Id = appUserViewModel.Id;
+            appUser.FullName = appUserViewModel.FullName;
+            appUser.BirthDay = appUserViewModel.BirthDay;
+            appUser.Email = appUserViewModel.Email;
+            appUser.UserName = appUserViewModel.UserName;
+            appUser.PhoneNumber = appUserViewModel.PhoneNumber;
         }
     }
 }

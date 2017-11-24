@@ -14,7 +14,7 @@ namespace TungShop.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(TungShop.Data.TungShopDbContext context)
