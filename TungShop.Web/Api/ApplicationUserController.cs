@@ -16,7 +16,7 @@ using TungShop.Web.Models;
 
 namespace TungShop.Web.Api
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/applicationUser")]
     public class ApplicationUserController : ApiControllerBase
     {

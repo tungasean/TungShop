@@ -1,3 +1,3 @@
 ﻿(function () {
-    angular.module('tungshop.common', ['ui.router'])
+    angular.module('tungshop.common', ['ui.router','checklist-model'])
 })();

@@ -14,7 +14,7 @@ using TungShop.Web.Models;
 namespace TungShop.Web.Api
 {
     [RoutePrefix("api/postcategory")]
-    //[Authorize]
+    [Authorize]
     public class PostCategoryController : ApiControllerBase
     {
         IPostCategoryService _postCategoryService;
