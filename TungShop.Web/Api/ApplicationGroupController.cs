@@ -19,7 +19,7 @@ using TungShop.Web.Models;
 namespace TungShop.Web.Api
 {
     [RoutePrefix("api/applicationGroup")]
-    [Authorize]
+    //[Authorize]
     public class ApplicationGroupController : ApiControllerBase
     {
         private IApplicationGroupService _appGroupService;

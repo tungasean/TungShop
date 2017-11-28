@@ -10,7 +10,7 @@ using TungShop.Web.Infrastructure.Core;
 namespace TungShop.Web.Api
 {
     [RoutePrefix("api/home")]
-    [Authorize]
+    //[Authorize]
     public class HomeController : ApiControllerBase
     {
         IErrorService _errorService;

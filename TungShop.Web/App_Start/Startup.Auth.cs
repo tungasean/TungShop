@@ -75,8 +75,9 @@ namespace TungShop.Web.App_Start
                 try
                 {
                     user = await userManager.FindAsync(context.UserName, context.Password);
+                    //user = userManager.Users.Local[0];
                 }
-                catch
+                catch (Exception ex)
                 {
                     // Could not retrieve the user due to error.
                     context.SetError("server_error");

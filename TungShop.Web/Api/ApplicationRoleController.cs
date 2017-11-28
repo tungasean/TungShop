@@ -16,7 +16,7 @@ using TungShop.Web.Models;
 namespace TungShop.Web.Api
 {
     [RoutePrefix("api/applicationRole")]
-    [Authorize]
+    //[Authorize]
     public class ApplicationRoleController : ApiControllerBase
     {
         private IApplicationRoleService _appRoleService;

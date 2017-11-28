@@ -7,13 +7,13 @@ namespace TungShop.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ChangeKey : IMigrationMetadata
+    public sealed partial class claim : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeKey));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(claim));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711210405559_ChangeKey"; }
+            get { return "201711281617566_claim"; }
         }
         
         string IMigrationMetadata.Source

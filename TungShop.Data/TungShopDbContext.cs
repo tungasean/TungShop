@@ -51,8 +51,8 @@ namespace TungShop.Data
         {
             builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId }).ToTable("ApplicationUserRoles");
             builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId).ToTable("ApplicationUserLogins");
-            builder.Entity<IdentityRole>().ToTable("ApplicationRoles");
-            builder.Entity<IdentityUserClaim>().HasKey(i => i.UserId).ToTable("ApplicationUserClaims");
+            builder.Entity<IdentityRole>().HasKey(r=>r.Id).ToTable("ApplicationRoles");
+            builder.Entity<IdentityUserClaim>().ToTable("ApplicationUserClaims");
 
         }
     }
