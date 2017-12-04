@@ -3,9 +3,9 @@
 
     app.controller('applicationUserListController', applicationUserListController);
 
-    applicationUserListController.$inject = ['$scope', 'apiService', 'notificationService'];
+    applicationUserListController.$inject = ['$scope', 'apiService', 'notificationService', '$ngBootbox', 'authData'];
 
-    function applicationUserListController($scope, apiService, notificationService) {
+    function applicationUserListController($scope, apiService, notificationService, $ngBootbox, authData) {
         $scope.loading = true;
         $scope.data = [];
         $scope.page = 0;
@@ -13,6 +13,16 @@
         $scope.search = search;
         $scope.clearSearch = clearSearch;
         $scope.deleteItem = deleteItem;
+        $scope.AddNew = false;
+        $scope.UpdateUser = false;
+        $scope.DeleteUser = false;
+        if (authData.authenticationData.roles && authData.authenticationData.roles["AddUser"])
+            $scope.AddNew = true;
+
+        if (authData.authenticationData.roles && authData.authenticationData.roles["UpdateUser"])
+            $scope.UpdateUser = true;
+        if (authData.authenticationData.roles && authData.authenticationData.roles["DeleteUser"])
+            $scope.DeleteUser = true;
 
         function deleteItem(id) {
             $ngBootbox.confirm('Bạn có chắc muốn xóa?')

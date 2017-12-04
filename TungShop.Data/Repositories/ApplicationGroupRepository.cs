@@ -12,6 +12,7 @@ namespace TungShop.Data.Repositories
     {
         IEnumerable<ApplicationGroup> GetListGroupByUserId(string userId);
         IEnumerable<ApplicationUser> GetListUserByGroupId(int groupId);
+        //IEnumerable<ApplicationRole> GetListRoleByUserId(string userName);
     }
     public class ApplicationGroupRepository : RepositoryBase<ApplicationGroup>, IApplicationGroupRepository
     {
@@ -41,5 +42,19 @@ namespace TungShop.Data.Repositories
                         select u;
             return query;
         }
+
+//        public IEnumerable<ApplicationRole> GetListRoleByUserId(string userName)
+//        {
+//            var query = from r in DbContext.ApplicationRoles
+//                join rg in DbContext.ApplicationRoleGroups
+//                on r.Id equals rg.RoleId
+//                join ug in DbContext.ApplicationUserGroups
+//                on rg.GroupId equals ug.GroupId
+//                join u in DbContext.ApplicationUsers
+//                on ug.UserId equals u.Id
+//                where u.UserName == userName
+//                select r;
+//            return query;
+//        }
     }
 }

@@ -60,9 +60,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201711281617566_claim.cs" />
-    <Compile Include="Migrations\201711281617566_claim.Designer.cs">
-      <DependentUpon>201711281617566_claim.cs</DependentUpon>
+    <Compile Include="Migrations\201712010309438_admin.cs" />
+    <Compile Include="Migrations\201712010309438_admin.Designer.cs">
+      <DependentUpon>201712010309438_admin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,8 +107,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711281617566_claim.resx">
-      <DependentUpon>201711281617566_claim.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712010309438_admin.resx">
+      <DependentUpon>201712010309438_admin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

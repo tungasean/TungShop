@@ -28,7 +28,7 @@ namespace TungShop.Data.Migrations
 
             var user = new ApplicationUser()
             {
-                UserName = "tung123",
+                UserName = "tung",
                 Email = "tung.international@gmail.com",
                 EmailConfirmed = true,
                 BirthDay = DateTime.Now,
@@ -36,7 +36,7 @@ namespace TungShop.Data.Migrations
 
             };                                                 
 
-            manager.Create(user, "123654$");
+            manager.Create(user, "123456$");
 
             if (!roleManager.Roles.Any())
             {
