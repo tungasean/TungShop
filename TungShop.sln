@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TungShop.Data", "TungShop.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TungShop.Service", "TungShop.Service\TungShop.Service.csproj", "{467E7B31-E50C-4D33-A6D7-48DB3CCAFB3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TungShop.UnitTest", "TungShop.UnitTest\TungShop.UnitTest.csproj", "{7280D83A-383E-4D0B-8EE8-B264E3AAA7C7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TungShop.Web", "TungShop.Web\TungShop.Web.csproj", "{D6962E63-37BD-4553-A21A-95CDBDC8232B}"
 EndProject
 Global
@@ -37,10 +35,6 @@ Global
 		{467E7B31-E50C-4D33-A6D7-48DB3CCAFB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{467E7B31-E50C-4D33-A6D7-48DB3CCAFB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{467E7B31-E50C-4D33-A6D7-48DB3CCAFB3F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7280D83A-383E-4D0B-8EE8-B264E3AAA7C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7280D83A-383E-4D0B-8EE8-B264E3AAA7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7280D83A-383E-4D0B-8EE8-B264E3AAA7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7280D83A-383E-4D0B-8EE8-B264E3AAA7C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D6962E63-37BD-4553-A21A-95CDBDC8232B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6962E63-37BD-4553-A21A-95CDBDC8232B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6962E63-37BD-4553-A21A-95CDBDC8232B}.Release|Any CPU.ActiveCfg = Release|Any CPU

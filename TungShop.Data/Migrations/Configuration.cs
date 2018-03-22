@@ -29,7 +29,7 @@ namespace TungShop.Data.Migrations
             var user = new ApplicationUser()
             {
                 UserName = "tung",
-                Email = "tung.international@gmail.com",
+                Email = "tungasean@gmail.com",
                 EmailConfirmed = true,
                 BirthDay = DateTime.Now,
                 FullName = "Technology Education"
@@ -44,7 +44,7 @@ namespace TungShop.Data.Migrations
                 roleManager.Create(new IdentityRole { Name = "User" });
             }
 
-            var adminUser = manager.FindByEmail("tung.international@gmail.com");
+            var adminUser = manager.FindByEmail("tungasean@gmail.com");
 
             manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
 
