@@ -19,14 +19,6 @@
                     authenticationService.setTokenInfo(userInfo);
                     authData.authenticationData.IsAuthenticated = true;
                     authData.authenticationData.userName = userName;
-                    authData.authenticationData.roles = {};
-                    var assignRole = JSON.parse(response.roles);
-                    if (assignRole && assignRole.length > 0) {
-                        for (var i = 0; i < assignRole.length; i++) {
-                            authData.authenticationData.roles[assignRole[i]] = assignRole[i];
-                        }
-                    }
-                     
                     deferred.resolve(null);
                 })
                     .error(function (err, status) {
@@ -42,7 +34,7 @@
                 authenticationService.removeToken();
                 authData.authenticationData.IsAuthenticated = false;
                 authData.authenticationData.userName = "";
-                authData.authenticationData.roles = {};
+                //authData.authenticationData.roles = {};
             }
         }]);
 })(angular.module('tungshop.common'));
