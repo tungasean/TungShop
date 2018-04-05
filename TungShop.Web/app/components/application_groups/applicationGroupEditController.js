@@ -22,8 +22,8 @@
             function (result) {
                 notificationService.displayError(result.data);
             });
-        }
 
+        }
         function addSuccessed() {
             notificationService.displaySuccess($scope.group.Name + ' đã được cập nhật thành công.');
 

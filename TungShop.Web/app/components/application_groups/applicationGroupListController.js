@@ -3,9 +3,9 @@
 
     app.controller('applicationGroupListController', applicationGroupListController);
 
-    applicationGroupListController.$inject = ['$scope', 'apiService', 'notificationService', '$filter', '$ngBootbox'];
+    applicationGroupListController.$inject = ['$scope', 'apiService', 'notificationService', '$filter'];
 
-    function applicationGroupListController($scope, apiService, notificationService, $filter, $ngBootbox) {
+    function applicationGroupListController($scope, apiService, notificationService, $filter) {
         $scope.loading = true;
         $scope.data = [];
         $scope.page = 0;
@@ -27,7 +27,7 @@
                     checkedList: JSON.stringify(listId)
                 }
             }
-            apiService.del('api/applicationGroup/deletemulti', config, function (result) {
+            apiService.del('/api/applicationGroup/deletemulti', config, function (result) {
                 notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
                 search();
             }, function (error) {
@@ -89,7 +89,7 @@
                 }
             }
 
-            apiService.get('api/applicationGroup/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
+            apiService.get('/api/applicationGroup/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
         }
 
         function dataLoadCompleted(result) {

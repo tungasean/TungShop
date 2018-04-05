@@ -3,9 +3,9 @@
 
     app.controller('applicationUserListController', applicationUserListController);
 
-    applicationUserListController.$inject = ['$scope', 'apiService', 'notificationService', '$ngBootbox', 'authData'];
+    applicationUserListController.$inject = ['$scope', 'apiService', 'notificationService', 'authData'];
 
-    function applicationUserListController($scope, apiService, notificationService, $ngBootbox, authData) {
+    function applicationUserListController($scope, apiService, notificationService, authData) {
         $scope.loading = true;
         $scope.data = [];
         $scope.page = 0;
@@ -25,21 +25,21 @@
             $scope.DeleteUser = true;
 
         function deleteItem(id) {
-            $ngBootbox.confirm('Bạn có chắc muốn xóa?')
-                .then(function () {
-                    var config = {
-                        params: {
-                            id: id
-                        }
-                    }
-                    apiService.del('/api/applicationUser/delete', config, function () {
-                        notificationService.displaySuccess('Đã xóa thành công.');
-                        search();
-                    },
-                    function () {
-                        notificationService.displayError('Xóa không thành công.');
-                    });
-                });
+//            $ngBootbox.confirm('Bạn có chắc muốn xóa?')
+//                .then(function () {
+//                    var config = {
+//                        params: {
+//                            id: id
+//                        }
+//                    }
+//                    apiService.del('/api/applicationUser/delete', config, function () {
+//                        notificationService.displaySuccess('Đã xóa thành công.');
+//                        search();
+//                    },
+//                    function () {
+//                        notificationService.displayError('Xóa không thành công.');
+//                    });
+//                });
         }
         function search(page) {
             page = page || 0;
@@ -53,7 +53,7 @@
                 }
             }
 
-            apiService.get('api/applicationUser/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
+            apiService.get('/api/applicationUser/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
         }
 
         function dataLoadCompleted(result) {
