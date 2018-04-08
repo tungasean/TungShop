@@ -3,7 +3,7 @@ namespace TungShop.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class intit : DbMigration
     {
         public override void Up()
         {
@@ -119,6 +119,36 @@ namespace TungShop.Data.Migrations
                 .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
+                "dbo.Contracts",
+                c => new
+                    {
+                        ContractID = c.Int(nullable: false, identity: true),
+                        StudentID = c.Int(nullable: false),
+                        RoomID = c.Int(nullable: false),
+                        TimeSign = c.DateTime(nullable: false),
+                        Term = c.Int(nullable: false),
+                        Status = c.Int(nullable: false),
+                        Note = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.ContractID);
+            
+            CreateTable(
+                "dbo.ElectricityWaters",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        RoomID = c.Int(nullable: false),
+                        Month = c.String(nullable: false),
+                        WaterNew = c.Int(nullable: false),
+                        WaterOld = c.Int(nullable: false),
+                        EletricityOld = c.Int(nullable: false),
+                        EletricityNew = c.Int(nullable: false),
+                        Money = c.Int(nullable: false),
+                        UserID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
                 "dbo.Errors",
                 c => new
                     {
@@ -137,6 +167,34 @@ namespace TungShop.Data.Migrations
                         Content = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.Invoices",
+                c => new
+                    {
+                        InvoiceID = c.Int(nullable: false, identity: true),
+                        Type = c.Int(nullable: false),
+                        RoomID = c.Int(nullable: false),
+                        Amount = c.Int(nullable: false),
+                        DayCreate = c.DateTime(nullable: false),
+                        DayPay = c.DateTime(nullable: false),
+                        UserCreate = c.Int(nullable: false),
+                        UserPay = c.Int(nullable: false),
+                        Content = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.InvoiceID);
+            
+            CreateTable(
+                "dbo.ListAssets",
+                c => new
+                    {
+                        AssetsID = c.Int(nullable: false, identity: true),
+                        AssetName = c.String(nullable: false),
+                        Amount = c.Int(nullable: false),
+                        Status = c.Int(nullable: false),
+                        AssetStype = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.AssetsID);
             
             CreateTable(
                 "dbo.MenuGroups",
@@ -355,6 +413,26 @@ namespace TungShop.Data.Migrations
                 .Index(t => t.TagID);
             
             CreateTable(
+                "dbo.RoomAssets",
+                c => new
+                    {
+                        RoomID = c.Int(nullable: false),
+                        AssetsID = c.Int(nullable: false),
+                        Amount = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.RoomID, t.AssetsID });
+            
+            CreateTable(
+                "dbo.Rooms",
+                c => new
+                    {
+                        RoomID = c.Int(nullable: false, identity: true),
+                        AmountMax = c.Int(nullable: false),
+                        Amount = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.RoomID);
+            
+            CreateTable(
                 "dbo.Slides",
                 c => new
                     {
@@ -368,6 +446,19 @@ namespace TungShop.Data.Migrations
                         Content = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.Students",
+                c => new
+                    {
+                        StudentID = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 256),
+                        BirthDay = c.DateTime(),
+                        Sex = c.String(maxLength: 15),
+                        CardNo = c.String(maxLength: 20),
+                        Address = c.String(maxLength: 200),
+                    })
+                .PrimaryKey(t => t.StudentID);
             
             CreateTable(
                 "dbo.SupportOnlines",
@@ -448,7 +539,10 @@ namespace TungShop.Data.Migrations
             DropTable("dbo.VisitorStatistics");
             DropTable("dbo.SystemConfigs");
             DropTable("dbo.SupportOnlines");
+            DropTable("dbo.Students");
             DropTable("dbo.Slides");
+            DropTable("dbo.Rooms");
+            DropTable("dbo.RoomAssets");
             DropTable("dbo.ProductTags");
             DropTable("dbo.Tags");
             DropTable("dbo.PostTags");
@@ -461,8 +555,12 @@ namespace TungShop.Data.Migrations
             DropTable("dbo.OrderDetails");
             DropTable("dbo.Menus");
             DropTable("dbo.MenuGroups");
+            DropTable("dbo.ListAssets");
+            DropTable("dbo.Invoices");
             DropTable("dbo.Footers");
             DropTable("dbo.Errors");
+            DropTable("dbo.ElectricityWaters");
+            DropTable("dbo.Contracts");
             DropTable("dbo.ApplicationUserLogins");
             DropTable("dbo.ApplicationUserClaims");
             DropTable("dbo.ApplicationUsers");

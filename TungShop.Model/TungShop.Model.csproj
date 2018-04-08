@@ -60,6 +60,10 @@
     <Compile Include="Models\ApplicationRoleGroup.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ApplicationUserGroup.cs" />
+    <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\Contract.cs" />
+    <Compile Include="Models\RoomAsset.cs" />
+    <Compile Include="Models\ListAsset.cs" />
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\Menu.cs" />
@@ -68,6 +72,9 @@
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\ElectricityWater.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\PostCategory.cs" />
     <Compile Include="Models\PostTag.cs" />
     <Compile Include="Models\Product.cs" />
