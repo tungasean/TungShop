@@ -61,6 +61,14 @@ namespace TungShop.Web.Infrastructure.Extensions
 
         }
 
+        public static void UpdateRoom(this Room room, RoomViewModel roomVm)
+        {
+            room.RoomID = roomVm.RoomID;
+            room.RoomName = roomVm.RoomName;
+            room.AmountMax = roomVm.AmountMax;
+            room.Amount = roomVm.Amount;
+        }
+
         public static void UpdatePost(this Post post, PostViewModel postVm)
         {
             post.ID = postVm.ID;

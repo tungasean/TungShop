@@ -202,6 +202,7 @@
     <Compile Include="Api\ApplicationUserController.cs" />
     <Compile Include="Api\HomeController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
+    <Compile Include="Api\RoomController.cs" />
     <Compile Include="Api\StudentController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\RoomViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductTagViewModel.cs" />
@@ -268,6 +270,13 @@
     <Content Include="app\components\products\productListController.js" />
     <Content Include="app\components\products\productListView.html" />
     <Content Include="app\components\products\products.module.js" />
+    <Content Include="app\components\rooms\roomAddController.js" />
+    <Content Include="app\components\rooms\roomAddView.html" />
+    <Content Include="app\components\rooms\roomEditController.js" />
+    <Content Include="app\components\rooms\roomEditView.html" />
+    <Content Include="app\components\rooms\roomListController.js" />
+    <Content Include="app\components\rooms\roomListView.html" />
+    <Content Include="app\components\rooms\rooms.module.js" />
     <Content Include="app\components\students\students.module.js" />
     <Content Include="app\components\students\studentAddController.js" />
     <Content Include="app\components\students\studentAddView.html" />

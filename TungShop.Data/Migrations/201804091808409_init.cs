@@ -3,7 +3,7 @@ namespace TungShop.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class intit : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -427,6 +427,7 @@ namespace TungShop.Data.Migrations
                 c => new
                     {
                         RoomID = c.Int(nullable: false, identity: true),
+                        RoomName = c.String(nullable: false),
                         AmountMax = c.Int(nullable: false),
                         Amount = c.Int(nullable: false),
                     })

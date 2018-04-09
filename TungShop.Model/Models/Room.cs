@@ -14,9 +14,12 @@ namespace TungShop.Model.Models
         public int RoomID { set; get; }
 
         [Required]
-        public int AmountMax { set; get; } // so nguoi toi da
+        public string RoomName { set; get; }
 
         [Required]
+        public int AmountMax { set; get; } // so nguoi toi da
+
+        
         public int Amount { set; get; } // so nguoi hien tai
 
     }

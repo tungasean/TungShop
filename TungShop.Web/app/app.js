@@ -4,6 +4,7 @@
     angular.module('tungshop',
         ['tungshop.products',
             'tungshop.students',
+            'tungshop.rooms',
             'tungshop.application_groups',
             'tungshop.product_categories',
             'tungshop.application_roles',
