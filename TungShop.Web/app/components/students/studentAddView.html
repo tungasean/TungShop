@@ -22,11 +22,42 @@
         <form class="form-horizontal" novalidate name="frmAddStudent" role="form" ng-submit="AddStudent()">
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Tên sinh viên</label>
+                    <label class="col-sm-2 control-label">Mã Sinh Viên</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" ng-maxlength="256" required name="name" ng-model="student.Name">
+                        <input type="text" class="form-control" ng-maxlength="20" name="cardno" ng-model="student.CardNo">
+                        <span ng-show="frmAddStudent.cardno.$invalid" class="has-error">Phải nhập mã sinh viên</span>
+                        <span ng-show="frmAddStudent.cardno.$error.maxlength" class="has-error">Mã sinh viên chỉ được 20 ký tự</span>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Tên Sinh Viên</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required name="name" ng-model="student.Name">
                         <span ng-show="frmAddStudent.name.$invalid" class="has-error">Phải nhập tên sinh viên</span>
-                        <span ng-show="frmAddStudent.name.$error.maxlength" class="has-error">Tên danh sinh viên được 256 ký tự</span>
+                        <span ng-show="frmAddStudent.name.$error.maxlength" class="has-error">Tên sinh viên chỉ được 256 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Giới Tính</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required name="sex" ng-model="student.Sex">
+                        <span ng-show="frmAddStudent.sex.$invalid" class="has-error">Phải nhập giới tính</span>
+                        <span ng-show="frmAddStudent.sex.$error.maxlength" class="has-error">Giới tính chỉ được 10 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : frmAddStudent.birthDate.$invalid && !frmAddStudent.birthDate.$pristine }">
+                    <label class="col-sm-2 control-label">Ngày sinh</label>
+                    <div class="col-sm-10">
+                        <input type="date" name="birthDate" as-date class="form-control"
+                               required reqired-message="Ngày sinh bắt buộc." ng-model="student.BirthDay">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Địa Chỉ</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-maxlength="500" name="address" ng-model="student.Address">
+                        <span ng-show="frmAddStudent.address.$error.maxlength" class="has-error">Địa chỉ chỉ được 500 ký tự</span>
 
                     </div>
                 </div>
