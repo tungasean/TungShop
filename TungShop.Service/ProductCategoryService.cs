@@ -17,8 +17,6 @@ namespace TungShop.Service
 
         IEnumerable<ProductCategory> GetAll(string keyword);
 
-        IEnumerable<ProductCategory> GetAllByParentId(int parentId);
-
         ProductCategory GetById(int id);
 
         void Save();

@@ -49,6 +49,18 @@ namespace TungShop.Web.Infrastructure.Extensions
             productCategory.Status = productCategoryVm.Status;
 
         }
+
+        public static void UpdateStudent(this Student student, StudentViewModel studentVm)
+        {
+            student.StudentID = studentVm.StudentID;
+            student.Name = studentVm.Name;
+            student.Sex = studentVm.Sex;
+            student.Address = studentVm.Address;
+            student.CardNo = studentVm.CardNo;
+            student.BirthDay = studentVm.BirthDay;
+
+        }
+
         public static void UpdatePost(this Post post, PostViewModel postVm)
         {
             post.ID = postVm.ID;

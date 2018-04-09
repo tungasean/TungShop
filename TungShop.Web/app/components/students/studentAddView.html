@@ -1,0 +1,40 @@
+﻿  <!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Thêm mới danh mục
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#">Quản Lý</a></li>
+        <li><a ui-sref="students">Danh Sách Sinh Viên</a></li>
+        <li class="active">Thêm mới</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Thêm mới</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" novalidate name="frmAddStudent" role="form" ng-submit="AddStudent()">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Tên sinh viên</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-maxlength="256" required name="name" ng-model="student.Name">
+                        <span ng-show="frmAddStudent.name.$invalid" class="has-error">Phải nhập tên sinh viên</span>
+                        <span ng-show="frmAddStudent.name.$error.maxlength" class="has-error">Tên danh sinh viên được 256 ký tự</span>
+
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <button ui-sref="students" class="btn btn-default">Hủy</button>
+                <button type="submit" ng-disabled="frmAddStudent.$invalid" class="btn btn-success pull-right">Lưu</button>
+            </div><!-- /.box-footer -->
+        </form>
+    </div><!-- /.box -->
+</section><!-- /.content -->

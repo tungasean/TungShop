@@ -3,6 +3,7 @@
 (function () {
     angular.module('tungshop',
         ['tungshop.products',
+            'tungshop.students',
             'tungshop.application_groups',
             'tungshop.product_categories',
             'tungshop.application_roles',

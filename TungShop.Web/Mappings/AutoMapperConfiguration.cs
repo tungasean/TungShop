@@ -23,6 +23,8 @@ namespace TungShop.Web.Mappings
             Mapper.CreateMap<ApplicationGroup, ApplicationGroupViewModel>();
             Mapper.CreateMap<ApplicationRole, ApplicationRoleViewModel>();
             Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>();
+
+            Mapper.CreateMap<Student, StudentViewModel>();
         }
     }
 }

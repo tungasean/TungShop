@@ -1,0 +1,70 @@
+﻿  <!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Cập nhật sinh viên: {{student.Name}}
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#">Quản Lý</a></li>
+        <li><a ui-sref="students">Danh Sách Sinh Viên</a></li>
+        <li class="active">Cập nhật</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{student.Name}}</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" novalidate name="frmUpdateStudent" role="form" ng-submit="UpdateStudent()">
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Mã Sinh Viên</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-maxlength="20" name="cardno" ng-model="student.CardNo">
+                        <span ng-show="frmAddStudent.cardno.$error.maxlength" class="has-error">Mã sinh viên chỉ được 20 ký tự</span>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Tên Sinh Viên</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control"  required name="name" ng-model="student.Name">
+                        <span ng-show="frmAddStudent.name.$invalid" class="has-error">Phải nhập tên sinh viên</span>
+                        <span ng-show="frmAddStudent.name.$error.maxlength" class="has-error">Tên sinh viên chỉ được 256 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Giới Tính</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control"  required name="sex" ng-model="student.Sex">
+                        <span ng-show="frmAddStudent.sex.$invalid" class="has-error">Phải nhập giới tính</span>
+                        <span ng-show="frmAddStudent.sex.$error.maxlength" class="has-error">Giới tính chỉ được 10 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : frmAddStudent.birthDate.$invalid && !frmAddStudent.birthDate.$pristine }">
+                    <label class="col-sm-2 control-label">Ngày sinh</label>
+                    <div class="col-sm-10">
+                        <input type="date" name="birthDate" as-date class="form-control"
+                               required reqired-message="Ngày sinh bắt buộc." ng-model="student.BirthDay">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Địa Chỉ</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-maxlength="500" name="address" ng-model="student.Address">
+                        <span ng-show="frmAddStudent.address.$error.maxlength" class="has-error">Địa chỉ chỉ được 500 ký tự</span>
+
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <button ui-sref="students" class="btn btn-default">Hủy</button>
+                <button type="submit" class="btn btn-success pull-right" ng-disabled="frmUpdateStudent.$invalid">Lưu</button>
+            </div><!-- /.box-footer -->
+        </form>
+    </div><!-- /.box -->
+</section><!-- /.content -->
