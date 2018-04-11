@@ -9,10 +9,9 @@
         $scope.pagesCount = 0;
         $scope.getstudents = getstudents;
         $scope.keyword = '';
+        
 
-        $scope.search = search;
-
-        function search() {
+        $scope.search = function() {
             getstudents();
         }
         function getstudents(page) {

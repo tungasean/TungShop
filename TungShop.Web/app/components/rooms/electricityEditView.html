@@ -1,9 +1,6 @@
 ﻿  <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
-        Điện Nước Phòng: {{RoomID}}
-
-    </h1>
+    <h1>  Điện Nước  </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         <li><a href="#">Quản Lý</a></li>
@@ -16,54 +13,71 @@
     <!-- Horizontal Form -->
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">{{RoomID}}</h3>
+            <h3 class="box-title">Điện Nước Phòng: {{RoomID}}</h3>
         </div><!-- /.box-header -->
         <!-- form start -->
         <form class="form-horizontal" novalidate name="frmUpdateElectricity" role="form" ng-submit="UpdateElectricity()">
-            <div class="box-body">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Số Điện Cũ</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" required name="eletricityOld" ng-change="Change()" ng-model="electricityWater.EletricityOld">
-                    </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Số Điện Cũ</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" required name="eletricityOld" ng-change="Change()" ng-model="electricityWater.EletricityOld">
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Số Điện Mới</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" required name="eletricityNew" ng-change="Change()" ng-model="electricityWater.EletricityNew">
-                    </div>
+                <label class="col-sm-2 control-label">Số Điện Mới</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" required name="eletricityNew" ng-change="Change()" ng-model="electricityWater.EletricityNew">
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Giá Điện</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" required name="priceElectricity" ng-change="Change()" ng-model="electricityWater.PriceElectricity">
-                    </div>
+                <label class="col-sm-2 control-label">Giá Điện</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" required name="priceElectricity" ng-change="Change()" ng-model="electricityWater.PriceElectricity">
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Số Nước Cũ</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" required name="waterOld" ng-change="Change()" ng-model="electricityWater.WaterOld">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Số Nước Cũ</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" required name="waterOld" ng-change="Change()" ng-model="electricityWater.WaterOld">
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Số Nước Mới</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" required name="waterNew" ng-change="Change()" ng-model="electricityWater.WaterNew">
-                    </div>
+                <label class="col-sm-2 control-label">Số Nước Mới</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" required name="waterNew" ng-change="Change()" ng-model="electricityWater.WaterNew">
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Giá Nước</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" required name="priceWater" ng-change="Change()" ng-model="electricityWater.PriceWater">
-                    </div>
+                <label class="col-sm-2 control-label">Giá Nước</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" required name="priceWater" ng-change="Change()" ng-model="electricityWater.PriceWater">
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Tổng Tiền</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" disabled="disabled" required name="money" ng-model="electricityWater.Money">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Tổng Tiền</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" disabled="disabled" required name="money" ng-model="electricityWater.Money">
                 </div>
-            </div><!-- /.box-body -->
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 20%">Mã Phòng</th>
+                            <th style="width:20%">Số Sinh Viên Tối Đa</th>
+                            <th style="width:20%">Số Sinh Viên Hiện Tại</th>
+                            <th style="width:20%">Tài Sản Phòng</th>
+                        </tr>
+                        <tr ng-repeat="item in rooms">
+                            <td><a ui-sref="edit_electricity({id:item.RoomID})">{{item.RoomID}}</a></td>
+                            <td>{{item.AmountMax}}</td>
+                            <td>{{item.Amount}}</td>
+                            <td><a ui-sref="edit_electricity({id:item.RoomID})">Tài Sản</a></td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" ui-sref="edit_room({id:item.RoomID})"><i class="fa fa-pencil"></i></button>
+                                <button class="btn  btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tfoot>
+                        <tr>
+                            <td colspan="5"><span class="pull-right">Trang: {{page+1}} - Tổng số bản ghi: {{totalCount}}</span></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
             <div class="box-footer">
                 <button ui-sref="rooms" class="btn btn-default">Hủy</button>
                 <button type="submit" class="btn btn-success pull-right" ng-disabled="frmUpdateElectricity.$invalid">Lưu</button>

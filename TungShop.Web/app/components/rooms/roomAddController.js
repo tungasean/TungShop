@@ -4,7 +4,9 @@
     roomAddController.$inject = ['apiService','$scope','notificationService','$state'];
 
     function roomAddController(apiService, $scope, notificationService,$state) {
-        $scope.room = {};
+        $scope.room = {
+            Amount: 0
+        };
         var day = Date.now();
         var date = new Date(day);
         $scope.NewElectricity = {

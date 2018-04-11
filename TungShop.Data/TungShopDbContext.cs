@@ -43,6 +43,7 @@ namespace TungShop.Data
         public DbSet<Contract> Contracts { set; get; } // hop dong
         public DbSet<Invoice> Invoices { set; get; }// hoa don
         public DbSet<ElectricityWater> ElectricityWaters { set; get; }//dien nuoc
+        public DbSet<ElectricityWaterHistory> ElectricityWaterHistorys { set; get; }//lich su dien nuoc
 
         public DbSet<ApplicationGroup> ApplicationGroups { set; get; }
         public DbSet<ApplicationRole> ApplicationRoles { set; get; }

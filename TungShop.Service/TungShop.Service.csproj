@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="ApplicationGroupService.cs" />
     <Compile Include="ApplicationRoleService.cs" />
+    <Compile Include="ElectricityWaterHistoryService.cs" />
     <Compile Include="ErrorService.cs" />
     <Compile Include="PostCategoryService.cs" />
     <Compile Include="PostService.cs" />

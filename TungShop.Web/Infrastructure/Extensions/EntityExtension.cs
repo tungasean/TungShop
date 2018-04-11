@@ -74,6 +74,21 @@ namespace TungShop.Web.Infrastructure.Extensions
             electricityWater.UserID = electricityWaterVm.UserID;
 
         }
+        public static void UpdateElectricityWaterHistory(this ElectricityWaterHistory electricityWaterHistory, ElectricityWaterHistoryViewModel electricityWaterHistoryVm)
+        {
+            electricityWaterHistory.RoomID = electricityWaterHistoryVm.RoomID;
+            electricityWaterHistory.EletricityOld = electricityWaterHistoryVm.EletricityOld;
+            electricityWaterHistory.EletricityNew = electricityWaterHistoryVm.EletricityNew;
+            electricityWaterHistory.WaterOld = electricityWaterHistoryVm.WaterOld;
+            electricityWaterHistory.WaterNew = electricityWaterHistoryVm.WaterNew;
+            electricityWaterHistory.Month = electricityWaterHistoryVm.Month;
+            electricityWaterHistory.Money = electricityWaterHistoryVm.Money;
+            electricityWaterHistory.PriceElectricity = electricityWaterHistoryVm.PriceElectricity;
+            electricityWaterHistory.PriceWater = electricityWaterHistoryVm.PriceWater;
+            electricityWaterHistory.UserID = electricityWaterHistoryVm.UserID;
+            electricityWaterHistory.TimeChange = electricityWaterHistoryVm.TimeChange;
+
+        }
 
         public static void UpdateRoom(this Room room, RoomViewModel roomVm)
         {
