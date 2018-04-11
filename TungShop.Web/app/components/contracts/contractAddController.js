@@ -5,6 +5,7 @@
 
     function contractAddController(apiService, $scope, notificationService,$state) {
         $scope.contract = {};
+        $scope.lstContract = [];
         $scope.ContractRoom = [];
         $scope.ContractStudent = [];
 
@@ -17,6 +18,24 @@
                     notificationService.displayError('Thêm mới không thành công.');
                 });
         }
+        function loadAllcontract() {
+            // Lay thong tin all hop dong
+            apiService.get('/api/contract/getallcontracts', null, function (result) {
+                $scope.lstContract = result.data;
+                if ($scope.ContractStudentTemp)
+                    for (var i = 0; i < $scope.ContractStudentTemp.length; i++) {
+                        var data = $scope.lstContract.find(function (da) {
+                            return da.StudentID === $scope.ContractStudentTemp[i].StudentID;
+                        });
+                        if (!data) {
+                            $scope.ContractStudent.push($scope.ContractStudentTemp[i]);
+                    }
+                }
+            }, function () {
+                console.log('Cannot get list Room');
+            });
+        }
+
         function loadRoomcontract() {
             // Lay thong tin cac phong
             apiService.get('/api/room/getallparents', null, function (result) {
@@ -26,16 +45,19 @@
                         $scope.ContractRoom.push($scope.Roomcontracts[i]);
                     }
                 }
+                loadStudentcontract();
             }, function () {
                 console.log('Cannot get list Room');
             });
         }
+
         function loadStudentcontract() {
-            // Lay thong tin cac phong
+            // Lay thong tin all sinh vien
             apiService.get('/api/student/getallparents', null, function (result) {
-                $scope.ContractStudent = result.data;
+                $scope.ContractStudentTemp = result.data;
+                loadAllcontract();
             }, function () {
-                console.log('Cannot get list Room');
+                console.log('Cannot get list Student');
             });
         }
 
@@ -50,7 +72,7 @@
         }
 
         loadRoomcontract();
-        loadStudentcontract();
+        
     }
 
 })(angular.module('tungshop.contracts'));

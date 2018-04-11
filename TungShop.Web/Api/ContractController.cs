@@ -28,7 +28,7 @@ namespace TungShop.Web.Api
 
         #endregion
 
-        [Route("getallrooms")]
+        [Route("getallcontracts")]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
         {
