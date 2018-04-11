@@ -43,7 +43,7 @@
             $scope.StudentName = "";
             if ($scope.ContractStudent && $scope.ContractStudent.length > 0) {
                 var student = $scope.ContractStudent.find(function(data) {
-                    return data.CardNo === id;
+                    return data.StudentID === id;
                 });
                 if (student) $scope.StudentName = student.Name;
             }

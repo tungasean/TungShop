@@ -19,8 +19,7 @@ namespace TungShop.Web.Models
 
         [Required]
         public int Term { set; get; } // ky han hop dong theo tháng
-
-        [Required]
+        
         public int Status { set; get; } //tinh trang hop dong
         
         public string Note { set; get; }

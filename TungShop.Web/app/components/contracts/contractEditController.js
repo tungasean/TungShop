@@ -4,7 +4,10 @@
     contractEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', '$stateParams'];
 
     function contractEditController(apiService, $scope, notificationService, $state, $stateParams) {
-        $scope.contract = {};
+        $scope.contract = null;
+        $scope.ContractStudent = null;
+        $scope.ContractRoom = [];
+        $scope.StudentName = "";
 
         $scope.Updatecontract = Updatecontract;
 //        $scope.GetSeoTitle = GetSeoTitle;
@@ -16,6 +19,14 @@
         function loadcontractDetail() {
             apiService.get('/api/contract/getbyid/' + $stateParams.id, null, function (result) {
                 $scope.contract = result.data;
+                if ($scope.ContractStudent && $scope.contract) {
+                    var student = $scope.ContractStudent.find(function(data) {
+                        return data.StudentID == $scope.contract.StudentID;
+                    });
+                    if (student) {
+                        $scope.StudentName = student.Name;
+                    }
+                }
             }, function (error) {
                 notificationService.displayError(error.data);
             });
@@ -31,15 +42,29 @@
                 });
         }
         function loadcontract() {
-            apiService.get('/api/contract/getallparents', null, function (result) {
-                $scopecontracts = result.data;
+            // Lay thong tin sinh vien
+            apiService.get('/api/student/getallparents', null, function (result) {
+                $scope.ContractStudent = result.data;
+                loadcontractDetail();
             }, function () {
-                console.log('Cannot get list parent');
+                console.log('Cannot get list Room');
             });
         }
-
-        loadcontract();
-        loadcontractDetail();
+        function loadRoomcontract() {
+            // Lay thong tin cac phong
+            apiService.get('/api/room/getallparents', null, function (result) {
+                $scope.Roomcontracts = result.data;
+                for (var i = 0; i < $scope.Roomcontracts.length; i++) {
+                    if ($scope.Roomcontracts[i].AmountMax - $scope.Roomcontracts[i].Amount > 0) {
+                        $scope.ContractRoom.push($scope.Roomcontracts[i]);
+                    }
+                }
+                loadcontract();
+            }, function () {
+                console.log('Cannot get list Room');
+            });
+        }
+        loadRoomcontract();
     }
 
 })(angular.module('tungshop.contracts'));

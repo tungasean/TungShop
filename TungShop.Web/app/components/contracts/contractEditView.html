@@ -22,25 +22,50 @@
         <form class="form-horizontal" novalidate name="frmUpdateRoom" role="form" ng-submit="UpdateRoom()">
             <div class="box-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Mã Phòng</label>
+                    <label class="col-sm-2 control-label">Phòng</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" ng-maxlength="20" name="roomname" ng-model="room.RoomName">
-                        <span ng-show="frmAddRoom.roomname.$invalid" class="has-error">Phải nhập mã phòng</span>
-                        <span ng-show="frmAddRoom.roomname.$error.maxlength" class="has-error">Mã phòng chỉ được 20 ký tự</span>
-
+                        <select name="roomID" class="form-control" ng-model="contract.RoomID" ng-options="option.RoomID as option.RoomID for option in ContractRoom"></select>
+                        <input type="hidden" name="roomID" ng-model="contract.RoomID" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Số Sinh Viên Tối Đa</label>
+                    <label class="col-sm-2 control-label">Mã Sinh Viên</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" required name="amountmax" ng-model="room.AmountMax">
-                        <span ng-show="frmAddRoom.amountmax.$invalid" class="has-error">Phải nhập số lượng sinh viên tối đa</span>
+                        <input type="text" class="form-control" disabled="disabled" name="studentID" ng-model="contract.StudentID" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Số Sinh Viên Hiện Tại</label>
+                    <label class="col-sm-2 control-label">Tên Sinh Viên</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" required name="amount" ng-model="room.Amount">
+                        <input type="text" disabled="disabled" class="form-control" ng-model="StudentName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Ngày Hiệu Lực</label>
+                    <div class="col-sm-10">
+                        <input type="date" name="timeSign" as-date class="form-control"
+                               required reqired-message="Ngày hiệu lực bắt buộc." ng-model="contract.TimeSign">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Kỳ Hạn (Tháng)</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required name="amount" ng-model="contract.Term">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Trạng Thái</label>
+                    <div class="col-sm-10">
+                        <select name="status" class="form-control" ng-model="contract.Status">
+                            <option>Còn Hiệu Lực</option>
+                            <option>Hết Hiệu Lực</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Ghi Chú</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required name="amount" ng-model="contract.Note">
                     </div>
                 </div>
             </div><!-- /.box-body -->

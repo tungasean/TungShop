@@ -17,7 +17,7 @@ namespace TungShop.Service
 
 //        IEnumerable<Contract> GetAll(string keyword);
 
-        Contract GetSingleByCondition(string studentId,string roomId);
+        Contract GetSingleByCondition(string studentId);
 
         void Save();
     }
@@ -57,9 +57,9 @@ namespace TungShop.Service
 //
 //        }
 
-        public Contract GetSingleByCondition(string studentId, string roomId)
+        public Contract GetSingleByCondition(string studentId)
         {
-            return _ContractRepository.GetSingleByCondition(x =>  x.StudentID == studentId && x.RoomID ==  roomId);
+            return _ContractRepository.GetSingleByCondition(x =>  x.StudentID == studentId);
         }
 
         public void Save()

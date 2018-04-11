@@ -12,8 +12,7 @@ namespace TungShop.Model.Models
         [Key]
         [Required]
         public string RoomID { set; get; }
-
-        [Required]
+        
         public string RoomName { set; get; }
 
         [Required]

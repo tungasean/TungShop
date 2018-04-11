@@ -42,13 +42,13 @@ namespace TungShop.Web.Api
                 return response;
             });
         }
-        [Route("getbyid/{studentId}+{roomId}")]
+        [Route("getbyid/{studentId}")]
         [HttpGet]
-        public HttpResponseMessage GetById(HttpRequestMessage request, string studentId, string roomId)
+        public HttpResponseMessage GetById(HttpRequestMessage request, string studentId)
         {
             return CreateHttpResponse(request, () =>
             {
-                var model = _ContractService.GetSingleByCondition(studentId, roomId);
+                var model = _ContractService.GetSingleByCondition(studentId);
 
                 var responseData = Mapper.Map<Contract, ContractViewModel>(model);
 
@@ -126,7 +126,7 @@ namespace TungShop.Web.Api
                 }
                 else
                 {
-                    var dbContract = _ContractService.GetSingleByCondition(ContractVm.StudentID, ContractVm.RoomID);
+                    var dbContract = _ContractService.GetSingleByCondition(ContractVm.StudentID);
 
                     dbContract.UpdateContract(ContractVm);
 

@@ -10,8 +10,7 @@ namespace TungShop.Web.Models
     {
         [Required]
         public string RoomID { set; get; }
-
-        [Required]
+        
         public string RoomName { set; get; }
 
         [Required]

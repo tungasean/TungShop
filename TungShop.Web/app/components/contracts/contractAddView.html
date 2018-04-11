@@ -24,14 +24,14 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Phòng</label>
                     <div class="col-sm-10">
-                        <select name="roomID" class="form-control" ng-model="contract.RoomID" ng-options="option.ID as option.RoomID for option in ContractRoom"></select>
+                        <select name="roomID" class="form-control" ng-model="contract.RoomID" ng-options="option.RoomID as option.RoomID for option in ContractRoom"></select>
                         <input type="hidden" name="roomID" ng-model="contract.RoomID" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Mã Sinh Viên</label>
                     <div class="col-sm-10">
-                        <select name="studentID" class="form-control" ng-selected="ChangeStudent(contract.StudentID)" ng-model="contract.StudentID" ng-options="option.CardNo as option.CardNo for option in ContractStudent"></select>
+                        <select name="studentID" class="form-control" ng-selected="ChangeStudent(contract.StudentID)" ng-model="contract.StudentID" ng-options="option.StudentID as option.StudentID for option in ContractStudent"></select>
                         <input type="hidden" name="studentID" ng-model="contract.StudentID" />
                     </div>
                 </div>
