@@ -13,17 +13,17 @@ using TungShop.Web.Infrastructure.Extensions;
 
 namespace TungShop.Web.Api
 {
-    [RoutePrefix("api/room")]
+    [RoutePrefix("api/electricityWater")]
     [Authorize]
-    public class RoomController : ApiControllerBase
+    public class ElectricityWaterController : ApiControllerBase
     {
         #region Initialize
-        private IRoomService _roomService;
+        private IElectricityWaterService _ElectricityWaterService;
 
-        public RoomController(IErrorService errorService, IRoomService roomService, IElectricityWaterService electricityWaterService)
+        public ElectricityWaterController(IErrorService errorService, IElectricityWaterService ElectricityWaterService)
             : base(errorService)
         {
-            this._roomService = roomService;
+            this._ElectricityWaterService = ElectricityWaterService;
         }
 
         #endregion
@@ -34,9 +34,9 @@ namespace TungShop.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                var model = _roomService.GetAll();
+                var model = _ElectricityWaterService.GetAll();
 
-                var responseData = Mapper.Map<IEnumerable<Room>, IEnumerable<RoomViewModel>>(model);
+                var responseData = Mapper.Map<IEnumerable<ElectricityWater>, IEnumerable<ElectricityWaterViewModel>>(model);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 return response;
@@ -48,9 +48,9 @@ namespace TungShop.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                var model = _roomService.GetById(id);
+                var model = _ElectricityWaterService.GetById(id);
 
-                var responseData = Mapper.Map<Room, RoomViewModel>(model);
+                var responseData = Mapper.Map<ElectricityWater, ElectricityWaterViewModel>(model);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
 
@@ -65,14 +65,14 @@ namespace TungShop.Web.Api
             return CreateHttpResponse(request, () =>
             {
                 int totalRow = 0;
-                var model = _roomService.GetAll(keyword);
+                var model = _ElectricityWaterService.GetAll(keyword);
 
                 totalRow = model.Count();
                 var query = model.OrderByDescending(x => x.RoomID).Skip(page * pageSize).Take(pageSize);
 
-                var responseData = Mapper.Map<IEnumerable<Room>, IEnumerable<RoomViewModel>>(query);
+                var responseData = Mapper.Map<IEnumerable<ElectricityWater>, IEnumerable<ElectricityWaterViewModel>>(query);
 
-                var paginationSet = new PaginationSet<RoomViewModel>()
+                var paginationSet = new PaginationSet<ElectricityWaterViewModel>()
                 {
                     Items = responseData,
                     Page = page,
@@ -88,7 +88,7 @@ namespace TungShop.Web.Api
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Create(HttpRequestMessage request, RoomViewModel roomVm)
+        public HttpResponseMessage Create(HttpRequestMessage request, ElectricityWaterViewModel ElectricityWaterVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -99,12 +99,12 @@ namespace TungShop.Web.Api
                 }
                 else
                 {
-                    var newRoom = new Room();
-                    newRoom.UpdateRoom(roomVm);
-                    _roomService.Add(newRoom);
-                    _roomService.Save();
+                    var newElectricityWater = new ElectricityWater();
+                    newElectricityWater.UpdateElectricityWater(ElectricityWaterVm);
+                    _ElectricityWaterService.Add(newElectricityWater);
+                    _ElectricityWaterService.Save();
 
-                    var responseData = Mapper.Map<Room, RoomViewModel>(newRoom);
+                    var responseData = Mapper.Map<ElectricityWater, ElectricityWaterViewModel>(newElectricityWater);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 
@@ -115,7 +115,7 @@ namespace TungShop.Web.Api
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
-        public HttpResponseMessage Update(HttpRequestMessage request, RoomViewModel roomVm)
+        public HttpResponseMessage Update(HttpRequestMessage request, ElectricityWaterViewModel ElectricityWaterVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -126,14 +126,14 @@ namespace TungShop.Web.Api
                 }
                 else
                 {
-                    var dbRoom = _roomService.GetById(roomVm.RoomID);
+                    var dbElectricityWater = _ElectricityWaterService.GetById(ElectricityWaterVm.RoomID);
 
-                    dbRoom.UpdateRoom(roomVm);
+                    dbElectricityWater.UpdateElectricityWater(ElectricityWaterVm);
 
-                    _roomService.Update(dbRoom);
-                    _roomService.Save();
+                    _ElectricityWaterService.Update(dbElectricityWater);
+                    _ElectricityWaterService.Save();
 
-                    var responseData = Mapper.Map<Room, RoomViewModel>(dbRoom);
+                    var responseData = Mapper.Map<ElectricityWater, ElectricityWaterViewModel>(dbElectricityWater);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 

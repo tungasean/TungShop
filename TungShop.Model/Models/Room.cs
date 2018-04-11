@@ -18,6 +18,7 @@ namespace TungShop.Model.Models
         [Required]
         public int AmountMax { set; get; } // so nguoi toi da
 
+        public int Price { get; set; } // gia phong
         
         public int Amount { set; get; } // so nguoi hien tai
 

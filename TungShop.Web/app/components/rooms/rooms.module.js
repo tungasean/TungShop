@@ -24,6 +24,12 @@
                 templateUrl: "/app/components/rooms/roomEditView.html",
                 controller: "roomEditController",
                 parent: 'base',
+            })
+            .state('edit_electricity', {
+                url: "/edit_electricity/:id",
+                templateUrl: "/app/components/rooms/electricityEditView.html",
+                controller: "electricityEditController",
+                parent: 'base',
             });
     }
 })();

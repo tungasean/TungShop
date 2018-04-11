@@ -60,6 +60,20 @@ namespace TungShop.Web.Infrastructure.Extensions
             student.BirthDay = studentVm.BirthDay;
 
         }
+        public static void UpdateElectricityWater(this ElectricityWater electricityWater, ElectricityWaterViewModel electricityWaterVm)
+        {
+            electricityWater.RoomID = electricityWaterVm.RoomID;
+            electricityWater.EletricityOld = electricityWaterVm.EletricityOld;
+            electricityWater.EletricityNew = electricityWaterVm.EletricityNew;
+            electricityWater.WaterOld = electricityWaterVm.WaterOld;
+            electricityWater.WaterNew = electricityWaterVm.WaterNew;
+            electricityWater.Month = electricityWaterVm.Month;
+            electricityWater.Money = electricityWaterVm.Money;
+            electricityWater.PriceElectricity = electricityWaterVm.PriceElectricity;
+            electricityWater.PriceWater = electricityWaterVm.PriceWater;
+            electricityWater.UserID = electricityWaterVm.UserID;
+
+        }
 
         public static void UpdateRoom(this Room room, RoomViewModel roomVm)
         {

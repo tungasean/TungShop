@@ -27,6 +27,7 @@ namespace TungShop.Web.Mappings
             Mapper.CreateMap<Student, StudentViewModel>();
             Mapper.CreateMap<Room, RoomViewModel>();
             Mapper.CreateMap<Contract, ContractViewModel>();
+            Mapper.CreateMap<ElectricityWater, ElectricityWaterViewModel>();
         }
     }
 }

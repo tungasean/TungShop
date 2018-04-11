@@ -135,17 +135,18 @@ namespace TungShop.Data.Migrations
                 "dbo.ElectricityWaters",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
-                        RoomID = c.Int(nullable: false),
-                        Month = c.String(nullable: false),
+                        RoomID = c.String(nullable: false, maxLength: 128),
+                        Month = c.String(),
                         WaterNew = c.Int(nullable: false),
                         WaterOld = c.Int(nullable: false),
                         EletricityOld = c.Int(nullable: false),
                         EletricityNew = c.Int(nullable: false),
                         Money = c.Int(nullable: false),
+                        PriceElectricity = c.Int(nullable: false),
+                        PriceWater = c.Int(nullable: false),
                         UserID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.RoomID);
             
             CreateTable(
                 "dbo.Errors",
@@ -428,6 +429,7 @@ namespace TungShop.Data.Migrations
                         RoomID = c.String(nullable: false, maxLength: 128),
                         RoomName = c.String(),
                         AmountMax = c.Int(nullable: false),
+                        Price = c.Int(nullable: false),
                         Amount = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.RoomID);

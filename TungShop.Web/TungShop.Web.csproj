@@ -204,6 +204,7 @@
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\ContractController.cs" />
     <Compile Include="Api\RoomController.cs" />
+    <Compile Include="Api\ElectricityWaterController.cs" />
     <Compile Include="Api\StudentController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Models\RoomViewModel.cs" />
     <Compile Include="Models\ContractViewModel.cs" />
+    <Compile Include="Models\ElectricityWaterViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductTagViewModel.cs" />
@@ -281,7 +283,9 @@
     <Content Include="app\components\contracts\contracts.module.js" />
     <Content Include="app\components\rooms\roomAddController.js" />
     <Content Include="app\components\rooms\roomAddView.html" />
+    <Content Include="app\components\rooms\electricityEditController.js" />
     <Content Include="app\components\rooms\roomEditController.js" />
+    <Content Include="app\components\rooms\electricityEditView.html" />
     <Content Include="app\components\rooms\roomEditView.html" />
     <Content Include="app\components\rooms\roomListController.js" />
     <Content Include="app\components\rooms\roomListView.html" />

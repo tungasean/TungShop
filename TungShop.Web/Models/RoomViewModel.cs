@@ -16,6 +16,7 @@ namespace TungShop.Web.Models
         [Required]
         public int AmountMax { set; get; }
 
+        public int Price { get; set; }
 
         public int Amount { set; get; }
 

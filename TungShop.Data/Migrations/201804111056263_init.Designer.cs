@@ -13,7 +13,7 @@ namespace TungShop.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201804110252061_init"; }
+            get { return "201804111056263_init"; }
         }
         
         string IMigrationMetadata.Source
