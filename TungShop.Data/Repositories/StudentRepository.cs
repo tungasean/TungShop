@@ -7,7 +7,7 @@ namespace TungShop.Data.Repositories
 {
     public interface IStudentRepository : IRepository<Student>
     {
-        IEnumerable<Student> GetById(int id);
+        IEnumerable<Student> GetById(string id);
     }
 
     public class StudentRepository : RepositoryBase<Student>, IStudentRepository
@@ -17,9 +17,9 @@ namespace TungShop.Data.Repositories
         {
         }
 
-        public IEnumerable<Student> GetById(int id)
+        public IEnumerable<Student> GetById(string StudentId)
         {
-            return this.DbContext.Students.Where(x => x.StudentID == id);
+            return this.DbContext.Students.Where(x => x.StudentID == StudentId );
         }
     }
 }

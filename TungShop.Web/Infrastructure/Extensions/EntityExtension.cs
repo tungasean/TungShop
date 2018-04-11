@@ -69,6 +69,16 @@ namespace TungShop.Web.Infrastructure.Extensions
             room.Amount = roomVm.Amount;
         }
 
+        public static void UpdateContract(this Contract contract, ContractViewModel contractVm)
+        {
+            contract.StudentID = contractVm.StudentID;
+            contract.RoomID = contractVm.RoomID;
+            contract.TimeSign = contractVm.TimeSign;
+            contract.Term = contractVm.Term;
+            contract.Status = contractVm.Status;
+            contract.Note = contractVm.Note;
+    }
+
         public static void UpdatePost(this Post post, PostViewModel postVm)
         {
             post.ID = postVm.ID;

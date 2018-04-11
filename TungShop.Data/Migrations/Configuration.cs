@@ -28,15 +28,15 @@ namespace TungShop.Data.Migrations
 
             var user = new ApplicationUser()
             {
-                UserName = "tung",
-                Email = "tungasean@gmail.com",
+                UserName = "admin",
+                Email = "admin@gmail.com",
                 EmailConfirmed = true,
                 BirthDay = DateTime.Now,
-                FullName = "Technology Education"
+                FullName = "Admin"
 
             };                                                 
 
-            manager.Create(user, "123456$");
+            manager.Create(user, "@123456");
 
             if (!roleManager.Roles.Any())
             {
@@ -44,7 +44,7 @@ namespace TungShop.Data.Migrations
                 roleManager.Create(new IdentityRole { Name = "User" });
             }
 
-            var adminUser = manager.FindByEmail("tungasean@gmail.com");
+            var adminUser = manager.FindByEmail("admin@gmail.com");
 
             manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
 

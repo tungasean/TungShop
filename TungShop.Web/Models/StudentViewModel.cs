@@ -8,7 +8,8 @@ namespace TungShop.Web.Models
 {
     public class StudentViewModel
     {
-        public int StudentID { set; get; }
+        [Required]
+        public string StudentID { set; get; }
 
         [Required]
         public string Name { set; get; }

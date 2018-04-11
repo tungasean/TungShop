@@ -10,8 +10,8 @@ namespace TungShop.Model.Models
     public class Student
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int StudentID { set; get; }
+        [Required]
+        public string StudentID { set; get; }
 
         [Required]
         [MaxLength(256)]

@@ -1,22 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using TungShop.Model.Abstract;
+using System.Linq;
+using System.Web;
 
-namespace TungShop.Model.Models
+namespace TungShop.Web.Models
 {
-    [Table("Contracts")]
-    public class Contract
+    public class ContractViewModel
     {
-        // hop dong
-        [Key]
-        [Column(Order = 1)]
         [Required]
         public string StudentID { set; get; }
 
-        [Key]
-        [Column(Order = 2)]
         [Required]
         public string RoomID { set; get; }
 
@@ -30,5 +24,6 @@ namespace TungShop.Model.Models
         public int Status { set; get; } //tinh trang hop dong
         
         public string Note { set; get; }
+
     }
 }

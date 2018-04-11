@@ -11,13 +11,13 @@ namespace TungShop.Service
 
         void Update(Room Room);
 
-        Room Delete(int id);
+        Room Delete(Room Room);
 
         IEnumerable<Room> GetAll();
 
         IEnumerable<Room> GetAll(string keyword);
 
-        Room GetById(int id);
+        Room GetById(string id);
 
         void Save();
     }
@@ -38,9 +38,9 @@ namespace TungShop.Service
             return _RoomRepository.Add(Room);
         }
 
-        public Room Delete(int id)
+        public Room Delete(Room Room)
         {
-            return _RoomRepository.Delete(id);
+            return _RoomRepository.Delete(Room);
         }
 
         public IEnumerable<Room> GetAll()
@@ -57,9 +57,9 @@ namespace TungShop.Service
 
         }
 
-        public Room GetById(int id)
+        public Room GetById(string id)
         {
-            return _RoomRepository.GetSingleById(id);
+            return _RoomRepository.GetSingleByCondition(x => x.RoomID == id);
         }
 
         public void Save()

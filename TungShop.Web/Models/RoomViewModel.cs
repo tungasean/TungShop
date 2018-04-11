@@ -8,7 +8,8 @@ namespace TungShop.Web.Models
 {
     public class RoomViewModel
     {
-        public int RoomID { set; get; }
+        [Required]
+        public string RoomID { set; get; }
 
         [Required]
         public string RoomName { set; get; }

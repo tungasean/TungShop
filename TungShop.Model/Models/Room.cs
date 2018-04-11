@@ -10,8 +10,8 @@ namespace TungShop.Model.Models
     public class Room
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RoomID { set; get; }
+        [Required]
+        public string RoomID { set; get; }
 
         [Required]
         public string RoomName { set; get; }

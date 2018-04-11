@@ -202,6 +202,7 @@
     <Compile Include="Api\ApplicationUserController.cs" />
     <Compile Include="Api\HomeController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
+    <Compile Include="Api\ContractController.cs" />
     <Compile Include="Api\RoomController.cs" />
     <Compile Include="Api\StudentController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Models\RoomViewModel.cs" />
+    <Compile Include="Models\ContractViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductTagViewModel.cs" />
@@ -270,6 +272,13 @@
     <Content Include="app\components\products\productListController.js" />
     <Content Include="app\components\products\productListView.html" />
     <Content Include="app\components\products\products.module.js" />
+    <Content Include="app\components\contracts\contractAddController.js" />
+    <Content Include="app\components\contracts\contractAddView.html" />
+    <Content Include="app\components\contracts\contractEditController.js" />
+    <Content Include="app\components\contracts\contractEditView.html" />
+    <Content Include="app\components\contracts\contractListController.js" />
+    <Content Include="app\components\contracts\contractListView.html" />
+    <Content Include="app\components\contracts\contracts.module.js" />
     <Content Include="app\components\rooms\roomAddController.js" />
     <Content Include="app\components\rooms\roomAddView.html" />
     <Content Include="app\components\rooms\roomEditController.js" />

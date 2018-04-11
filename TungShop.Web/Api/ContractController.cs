@@ -13,44 +13,44 @@ using TungShop.Web.Infrastructure.Extensions;
 
 namespace TungShop.Web.Api
 {
-    [RoutePrefix("api/room")]
+    [RoutePrefix("api/contract")]
     [Authorize]
-    public class RoomController : ApiControllerBase
+    public class ContractController : ApiControllerBase
     {
         #region Initialize
-        private IRoomService _roomService;
+        private IContractService _ContractService;
 
-        public RoomController(IErrorService errorService, IRoomService roomService)
+        public ContractController(IErrorService errorService, IContractService ContractService)
             : base(errorService)
         {
-            this._roomService = roomService;
+            this._ContractService = ContractService;
         }
 
         #endregion
 
-        [Route("getallparents")]
+        [Route("getallrooms")]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>
             {
-                var model = _roomService.GetAll();
+                var model = _ContractService.GetAll();
 
-                var responseData = Mapper.Map<IEnumerable<Room>, IEnumerable<RoomViewModel>>(model);
+                var responseData = Mapper.Map<IEnumerable<Contract>, IEnumerable<ContractViewModel>>(model);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 return response;
             });
         }
-        [Route("getbyid/{id}")]
+        [Route("getbyid/{studentId}+{roomId}")]
         [HttpGet]
-        public HttpResponseMessage GetById(HttpRequestMessage request, string id)
+        public HttpResponseMessage GetById(HttpRequestMessage request, string studentId, string roomId)
         {
             return CreateHttpResponse(request, () =>
             {
-                var model = _roomService.GetById(id);
+                var model = _ContractService.GetSingleByCondition(studentId, roomId);
 
-                var responseData = Mapper.Map<Room, RoomViewModel>(model);
+                var responseData = Mapper.Map<Contract, ContractViewModel>(model);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
 
@@ -65,14 +65,14 @@ namespace TungShop.Web.Api
             return CreateHttpResponse(request, () =>
             {
                 int totalRow = 0;
-                var model = _roomService.GetAll(keyword);
+                var model = _ContractService.GetAll();
 
                 totalRow = model.Count();
                 var query = model.OrderByDescending(x => x.RoomID).Skip(page * pageSize).Take(pageSize);
 
-                var responseData = Mapper.Map<IEnumerable<Room>, IEnumerable<RoomViewModel>>(query);
+                var responseData = Mapper.Map<IEnumerable<Contract>, IEnumerable<ContractViewModel>>(query);
 
-                var paginationSet = new PaginationSet<RoomViewModel>()
+                var paginationSet = new PaginationSet<ContractViewModel>()
                 {
                     Items = responseData,
                     Page = page,
@@ -88,7 +88,7 @@ namespace TungShop.Web.Api
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Create(HttpRequestMessage request, RoomViewModel roomVm)
+        public HttpResponseMessage Create(HttpRequestMessage request, ContractViewModel ContractVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -99,12 +99,12 @@ namespace TungShop.Web.Api
                 }
                 else
                 {
-                    var newRoom = new Room();
-                    newRoom.UpdateRoom(roomVm);
-                    _roomService.Add(newRoom);
-                    _roomService.Save();
+                    var newContract = new Contract();
+                    newContract.UpdateContract(ContractVm);
+                    _ContractService.Add(newContract);
+                    _ContractService.Save();
 
-                    var responseData = Mapper.Map<Room, RoomViewModel>(newRoom);
+                    var responseData = Mapper.Map<Contract, ContractViewModel>(newContract);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 
@@ -115,7 +115,7 @@ namespace TungShop.Web.Api
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
-        public HttpResponseMessage Update(HttpRequestMessage request, RoomViewModel roomVm)
+        public HttpResponseMessage Update(HttpRequestMessage request, ContractViewModel ContractVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -126,14 +126,14 @@ namespace TungShop.Web.Api
                 }
                 else
                 {
-                    var dbRoom = _roomService.GetById(roomVm.RoomID);
+                    var dbContract = _ContractService.GetSingleByCondition(ContractVm.StudentID, ContractVm.RoomID);
 
-                    dbRoom.UpdateRoom(roomVm);
+                    dbContract.UpdateContract(ContractVm);
 
-                    _roomService.Update(dbRoom);
-                    _roomService.Save();
+                    _ContractService.Update(dbContract);
+                    _ContractService.Save();
 
-                    var responseData = Mapper.Map<Room, RoomViewModel>(dbRoom);
+                    var responseData = Mapper.Map<Contract, ContractViewModel>(dbContract);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 

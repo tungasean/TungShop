@@ -11,13 +11,13 @@ namespace TungShop.Service
 
         void Update(Student Student);
 
-        Student Delete(int id);
+        Student Delete(Student Student);
 
         IEnumerable<Student> GetAll();
 
         IEnumerable<Student> GetAll(string keyword);
 
-        Student GetById(int id);
+        Student GetById(string id);
 
         void Save();
     }
@@ -38,9 +38,9 @@ namespace TungShop.Service
             return _StudentRepository.Add(Student);
         }
 
-        public Student Delete(int id)
+        public Student Delete(Student Student)
         {
-            return _StudentRepository.Delete(id);
+            return _StudentRepository.Delete(Student);
         }
 
         public IEnumerable<Student> GetAll()
@@ -62,9 +62,9 @@ namespace TungShop.Service
 //            return _ProductCategoryRepository.GetMulti(x => x.Status && x.ParentID == parentId);
 //        }
 
-        public Student GetById(int id)
+        public Student GetById(string id)
         {
-            return _StudentRepository.GetSingleById(id);
+            return _StudentRepository.GetSingleByCondition(x => x.StudentID == id);
         }
 
         public void Save()
