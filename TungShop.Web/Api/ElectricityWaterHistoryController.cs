@@ -50,7 +50,7 @@ namespace TungShop.Web.Api
             {
                 var model = _ElectricityWaterHistoryService.GetById(id);
 
-                var responseData = Mapper.Map<ElectricityWaterHistory, ElectricityWaterHistoryViewModel>(model);
+                var responseData = Mapper.Map<IEnumerable<ElectricityWaterHistory>, IEnumerable<ElectricityWaterHistoryViewModel>>(model);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
 
@@ -105,35 +105,6 @@ namespace TungShop.Web.Api
                     _ElectricityWaterHistoryService.Save();
 
                     var responseData = Mapper.Map<ElectricityWaterHistory, ElectricityWaterHistoryViewModel>(newElectricityWaterHistory);
-                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
-                }
-
-                return response;
-            });
-        }
-
-        [Route("update")]
-        [HttpPut]
-        [AllowAnonymous]
-        public HttpResponseMessage Update(HttpRequestMessage request, ElectricityWaterHistoryViewModel ElectricityWaterHistoryVm)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-                HttpResponseMessage response = null;
-                if (!ModelState.IsValid)
-                {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var dbElectricityWaterHistory = _ElectricityWaterHistoryService.GetById(ElectricityWaterHistoryVm.RoomID);
-
-                    dbElectricityWaterHistory.UpdateElectricityWaterHistory(ElectricityWaterHistoryVm);
-
-                    _ElectricityWaterHistoryService.Update(dbElectricityWaterHistory);
-                    _ElectricityWaterHistoryService.Save();
-
-                    var responseData = Mapper.Map<ElectricityWaterHistory, ElectricityWaterHistoryViewModel>(dbElectricityWaterHistory);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 

@@ -140,5 +140,31 @@ namespace TungShop.Web.Api
                 return response;
             });
         }
+
+        [Route("delete")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage Delete(HttpRequestMessage request, string id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var dbRoom = _roomService.GetById(id);
+                    var oldRoom = _roomService.Delete(dbRoom);
+                    _roomService.Save();
+
+                    var responseData = Mapper.Map<Room, RoomViewModel>(oldRoom);
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
+
+                return response;
+            });
+        }
     }
 }

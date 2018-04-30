@@ -17,7 +17,7 @@ namespace TungShop.Service
 
         IEnumerable<ElectricityWaterHistory> GetAll(string keyword);
 
-        ElectricityWaterHistory GetById(string id);
+        IEnumerable<ElectricityWaterHistory> GetById(string id);
 
         void Save();
     }
@@ -62,9 +62,9 @@ namespace TungShop.Service
 //            return _ProductCategoryRepository.GetMulti(x => x.Status && x.ParentID == parentId);
 //        }
 
-        public ElectricityWaterHistory GetById(string id)
+        public IEnumerable<ElectricityWaterHistory> GetById(string id)
         {
-            return _ElectricityWaterHistoryRepository.GetSingleByCondition(x => x.RoomID == id);
+            return _ElectricityWaterHistoryRepository.GetMulti(x => x.RoomID == id);
         }
 
         public void Save()

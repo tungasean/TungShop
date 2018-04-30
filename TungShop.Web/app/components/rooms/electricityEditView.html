@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Số Điện Cũ</label>
                 <div class="col-sm-2">
-                    <input type="text" class="form-control" required name="eletricityOld" ng-change="Change()" ng-model="electricityWater.EletricityOld">
+                    <input type="text" class="form-control" disabled="disabled" required name="eletricityOld" ng-change="Change()" ng-model="electricityWater.EletricityOld">
                 </div>
                 <label class="col-sm-2 control-label">Số Điện Mới</label>
                 <div class="col-sm-2">
@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Số Nước Cũ</label>
                 <div class="col-sm-2">
-                    <input type="text" class="form-control" required name="waterOld" ng-change="Change()" ng-model="electricityWater.WaterOld">
+                    <input type="text" class="form-control" required disabled="disabled" name="waterOld" ng-change="Change()" ng-model="electricityWater.WaterOld">
                 </div>
                 <label class="col-sm-2 control-label">Số Nước Mới</label>
                 <div class="col-sm-2">
@@ -55,15 +55,27 @@
                 <div class="col-md-12">
                     <table class="table table-bordered">
                         <tr>
-                            <th style="width: 20%">Mã Phòng</th>
-                            <th style="width:20%">Số Sinh Viên Tối Đa</th>
-                            <th style="width:20%">Số Sinh Viên Hiện Tại</th>
-                            <th style="width:20%">Tài Sản Phòng</th>
+                            <th style="width:10%">Tháng</th>
+                            <th style="width:10%">Số Điện Cũ</th>
+                            <th style="width:10%">Số Điện Mới</th>
+                            <th style="width:10%">Giá Điện</th>
+                            <th style="width:10%">Số Nước Cũ</th>
+                            <th style="width:10%">Số Nước Mới</th>
+                            <th style="width:10%">Giá Nước</th>
+                            <th style="width:10%">Thành Tiền</th>
+                            <th style="width:20%">Thời Gian Cập Nhật</th>
+
                         </tr>
-                        <tr ng-repeat="item in rooms">
-                            <td><a ui-sref="edit_electricity({id:item.RoomID})">{{item.RoomID}}</a></td>
-                            <td>{{item.AmountMax}}</td>
-                            <td>{{item.Amount}}</td>
+                        <tr ng-repeat="item in RoomHistorys">
+                            <td>{{item.Month}}</td>
+                            <td>{{item.WaterOld}}</td>
+                            <td>{{item.WaterNew}}</td>
+                            <td>{{item.PriceWater}}</td>
+                            <td>{{item.EletricityOld}}</td>
+                            <td>{{item.EletricityNew}}</td>
+                            <td>{{item.PriceElectricity}}</td>
+                            <td>{{item.Money}}</td>
+                            <td>{{item.TimeChange | 'dd/MM/yyyy hh:mm:ss'}}</td>
                             <td><a ui-sref="edit_electricity({id:item.RoomID})">Tài Sản</a></td>
                             <td>
                                 <button class="btn btn-sm btn-primary" ui-sref="edit_room({id:item.RoomID})"><i class="fa fa-pencil"></i></button>

@@ -51,7 +51,7 @@
                             <td><a ui-sref="edit_electricity({id:item.RoomID})">Tài Sản</a></td>
                             <td>
                                 <button class="btn btn-sm btn-primary" ui-sref="edit_room({id:item.RoomID})"><i class="fa fa-pencil"></i></button>
-                                <button class="btn  btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button class="btn  btn-sm btn-danger" ng-click="deleteRoom(item.RoomID)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         <tfoot>

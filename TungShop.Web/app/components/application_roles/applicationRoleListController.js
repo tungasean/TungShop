@@ -3,9 +3,9 @@
 
     app.controller('applicationRoleListController', applicationRoleListController);
 
-    applicationRoleListController.$inject = ['$scope', 'apiService', 'notificationService', '$filter'];
+    applicationRoleListController.$inject = ['$scope', 'apiService', 'notificationService', '$filter','$ngBootbox'];
 
-    function applicationRoleListController($scope, apiService, notificationService, $filter) {
+    function applicationRoleListController($scope, apiService, notificationService, $filter, $ngBootbox) {
         $scope.loading = true;
         $scope.data = [];
         $scope.page = 0;

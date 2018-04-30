@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller("roomListController", roomListController);
 
-    roomListController.$inject = ['$scope', 'apiService', 'notificationService'];
+    roomListController.$inject = ['$scope', 'apiService', 'notificationService','$ngBootbox'];
 
-    function roomListController($scope, apiService, notificationService) {
+    function roomListController($scope, apiService, notificationService, $ngBootbox) {
         $scope.rooms = [];
         $scope.page = 0;
         $scope.pagesCount = 0;
@@ -34,6 +34,24 @@
                 $scope.totalCount = result.data.TotalCount;
             }, function () {
                 console.log('Load room failed.');
+            });
+        }
+
+        $scope.deleteRoom = deleteRoom;
+
+        function deleteRoom(id) {
+            $ngBootbox.confirm('Bạn có chắc muốn xóa?').then(function () {
+                var config = {
+                    params: {
+                        id: id
+                    }
+                }
+                apiService.del('/api/room/delete', config, function () {
+                    notificationService.displaySuccess('Xóa thành công');
+                    search();
+                }, function () {
+                    notificationService.displayError('Xóa không thành công');
+                })
             });
         }
 

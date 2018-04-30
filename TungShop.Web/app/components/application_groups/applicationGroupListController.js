@@ -3,9 +3,9 @@
 
     app.controller('applicationGroupListController', applicationGroupListController);
 
-    applicationGroupListController.$inject = ['$scope', 'apiService', 'notificationService', '$filter'];
+    applicationGroupListController.$inject = ['$scope', 'apiService', 'notificationService', '$filter','$ngBootbox'];
 
-    function applicationGroupListController($scope, apiService, notificationService, $filter) {
+    function applicationGroupListController($scope, apiService, notificationService, $filter, $ngBootbox) {
         $scope.loading = true;
         $scope.data = [];
         $scope.page = 0;
