@@ -48,7 +48,7 @@ namespace TungShop.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                var model = _ElectricityWaterHistoryService.GetById(id);
+                var model = _ElectricityWaterHistoryService.GetAll(id);
 
                 var responseData = Mapper.Map<IEnumerable<ElectricityWaterHistory>, IEnumerable<ElectricityWaterHistoryViewModel>>(model);
 

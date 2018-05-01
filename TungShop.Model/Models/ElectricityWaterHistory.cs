@@ -10,6 +10,9 @@ namespace TungShop.Model.Models
     public class ElectricityWaterHistory
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { set; get; }
+
         [Required]
         public string RoomID { set; get; }
         

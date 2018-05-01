@@ -51,7 +51,7 @@ namespace TungShop.Service
         public IEnumerable<ElectricityWaterHistory> GetAll(string keyword)
         {
             if (!string.IsNullOrEmpty(keyword))
-                return _ElectricityWaterHistoryRepository.GetMulti(x => x.RoomID.Contains(keyword));
+                return _ElectricityWaterHistoryRepository.GetMulti(x => x.RoomID == keyword);
             else
                 return _ElectricityWaterHistoryRepository.GetAll();
 

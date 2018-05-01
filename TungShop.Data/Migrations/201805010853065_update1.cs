@@ -3,7 +3,7 @@ namespace TungShop.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class update3 : DbMigration
+    public partial class update1 : DbMigration
     {
         public override void Up()
         {
@@ -119,17 +119,32 @@ namespace TungShop.Data.Migrations
                 .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
+                "dbo.Approvals",
+                c => new
+                    {
+                        ApprovalId = c.Int(nullable: false, identity: true),
+                        StudentId = c.String(),
+                        Name = c.String(),
+                        BirthDay = c.DateTime(),
+                        Sex = c.String(maxLength: 15),
+                        CardNo = c.String(maxLength: 20),
+                        Address = c.String(maxLength: 200),
+                        Status = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ApprovalId);
+            
+            CreateTable(
                 "dbo.Contracts",
                 c => new
                     {
                         StudentID = c.String(nullable: false, maxLength: 128),
-                        RoomID = c.String(nullable: false, maxLength: 128),
+                        RoomID = c.String(nullable: false),
                         TimeSign = c.DateTime(nullable: false),
                         Term = c.Int(nullable: false),
                         Status = c.Int(nullable: false),
                         Note = c.String(),
                     })
-                .PrimaryKey(t => new { t.StudentID, t.RoomID });
+                .PrimaryKey(t => t.StudentID);
             
             CreateTable(
                 "dbo.ElectricityWaterHistorys",
@@ -583,6 +598,7 @@ namespace TungShop.Data.Migrations
             DropTable("dbo.ElectricityWaters");
             DropTable("dbo.ElectricityWaterHistorys");
             DropTable("dbo.Contracts");
+            DropTable("dbo.Approvals");
             DropTable("dbo.ApplicationUserLogins");
             DropTable("dbo.ApplicationUserClaims");
             DropTable("dbo.ApplicationUsers");

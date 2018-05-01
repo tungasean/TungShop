@@ -89,6 +89,7 @@ namespace TungShop.Web.Infrastructure.Extensions
         }
         public static void UpdateElectricityWaterHistory(this ElectricityWaterHistory electricityWaterHistory, ElectricityWaterHistoryViewModel electricityWaterHistoryVm)
         {
+            electricityWaterHistory.ID = electricityWaterHistoryVm.ID;
             electricityWaterHistory.RoomID = electricityWaterHistoryVm.RoomID;
             electricityWaterHistory.EletricityOld = electricityWaterHistoryVm.EletricityOld;
             electricityWaterHistory.EletricityNew = electricityWaterHistoryVm.EletricityNew;

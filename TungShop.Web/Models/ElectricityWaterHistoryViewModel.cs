@@ -8,6 +8,8 @@ namespace TungShop.Web.Models
 {
     public class ElectricityWaterHistoryViewModel
     {
+        public int ID { set; get; }
+
         [Required]
         public string RoomID { set; get; }
 
