@@ -3,7 +3,7 @@ namespace TungShop.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class update3 : DbMigration
     {
         public override void Up()
         {
@@ -130,6 +130,24 @@ namespace TungShop.Data.Migrations
                         Note = c.String(),
                     })
                 .PrimaryKey(t => new { t.StudentID, t.RoomID });
+            
+            CreateTable(
+                "dbo.ElectricityWaterHistorys",
+                c => new
+                    {
+                        RoomID = c.String(nullable: false, maxLength: 128),
+                        Month = c.String(),
+                        WaterNew = c.Int(nullable: false),
+                        WaterOld = c.Int(nullable: false),
+                        EletricityOld = c.Int(nullable: false),
+                        EletricityNew = c.Int(nullable: false),
+                        Money = c.Int(nullable: false),
+                        PriceElectricity = c.Int(nullable: false),
+                        PriceWater = c.Int(nullable: false),
+                        UserID = c.Int(nullable: false),
+                        TimeChange = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.RoomID);
             
             CreateTable(
                 "dbo.ElectricityWaters",
@@ -431,6 +449,7 @@ namespace TungShop.Data.Migrations
                         AmountMax = c.Int(nullable: false),
                         Price = c.Int(nullable: false),
                         Amount = c.Int(nullable: false),
+                        Sex = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.RoomID);
             
@@ -562,6 +581,7 @@ namespace TungShop.Data.Migrations
             DropTable("dbo.Footers");
             DropTable("dbo.Errors");
             DropTable("dbo.ElectricityWaters");
+            DropTable("dbo.ElectricityWaterHistorys");
             DropTable("dbo.Contracts");
             DropTable("dbo.ApplicationUserLogins");
             DropTable("dbo.ApplicationUserClaims");

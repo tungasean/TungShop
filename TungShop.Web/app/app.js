@@ -6,6 +6,7 @@
             'tungshop.students',
             'tungshop.rooms',
             'tungshop.contracts',
+            'tungshop.approvals',
             'tungshop.application_groups',
             'tungshop.product_categories',
             'tungshop.application_roles',

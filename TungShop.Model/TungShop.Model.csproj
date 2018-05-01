@@ -60,6 +60,7 @@
     <Compile Include="Models\ApplicationRoleGroup.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ApplicationUserGroup.cs" />
+    <Compile Include="Models\Approval.cs" />
     <Compile Include="Models\ElectricityWaterHistory.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Contract.cs" />

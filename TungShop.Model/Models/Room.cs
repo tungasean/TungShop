@@ -22,5 +22,7 @@ namespace TungShop.Model.Models
         
         public int Amount { set; get; } // so nguoi hien tai
 
+        public int Sex { get; set; } // phong nam hay nu 0 la nam, 1 la nu
+
     }
 }

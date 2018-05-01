@@ -206,6 +206,7 @@
     <Compile Include="Api\ContractController.cs" />
     <Compile Include="Api\RoomController.cs" />
     <Compile Include="Api\ElectricityWaterController.cs" />
+    <Compile Include="Api\ApprovalController.cs" />
     <Compile Include="Api\StudentController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="Models\RoomViewModel.cs" />
     <Compile Include="Models\ContractViewModel.cs" />
     <Compile Include="Models\ElectricityWaterViewModel.cs" />
+    <Compile Include="Models\ApprovalViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductTagViewModel.cs" />
@@ -292,6 +294,13 @@
     <Content Include="app\components\rooms\roomListController.js" />
     <Content Include="app\components\rooms\roomListView.html" />
     <Content Include="app\components\rooms\rooms.module.js" />
+    <Content Include="app\components\approvals\approvalAddController.js" />
+    <Content Include="app\components\approvals\approvalAddView.html" />
+    <Content Include="app\components\approvals\approvalEditController.js" />
+    <Content Include="app\components\approvals\approvalEditView.html" />
+    <Content Include="app\components\approvals\approvalListController.js" />
+    <Content Include="app\components\approvals\approvalListView.html" />
+    <Content Include="app\components\approvals\approvals.module.js" />
     <Content Include="app\components\students\students.module.js" />
     <Content Include="app\components\students\studentAddController.js" />
     <Content Include="app\components\students\studentAddView.html" />

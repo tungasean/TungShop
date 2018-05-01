@@ -62,6 +62,7 @@
     <Compile Include="ContractService.cs" />
     <Compile Include="RoomService.cs" />
     <Compile Include="ElectricityWaterService.cs" />
+    <Compile Include="ApprovalService.cs" />
     <Compile Include="StudentService.cs" />
     <Compile Include="ProductCategoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

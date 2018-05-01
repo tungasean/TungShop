@@ -16,6 +16,11 @@
         $scope.AddRoom = AddRoom;
 
         function AddRoom() {
+            if ($scope.room.Type === 'Nam')
+                $scope.room.Sex = 0;
+            else {
+                $scope.room.Sex = 1;
+            }
             apiService.post('/api/room/create', $scope.room,
                 function (result) {
                     $scope.NewElectricity.RoomID = $scope.room.RoomID;

@@ -15,6 +15,12 @@
 
         function loadRoomDetail() {
             apiService.get('/api/room/getbyid/' + $stateParams.id, null, function (result) {
+                if (result.data)
+                    if (result.data.Sex === 0)
+                        result.data.Type = 'Nam';
+                    else {
+                        result.data.Type = 'Nữ';
+                    }
                 $scope.room = result.data;
             }, function (error) {
                 notificationService.displayError(error.data);
@@ -22,6 +28,11 @@
         }
 
         function UpdateRoom() {
+            if ($scope.room.Type === 'Nam')
+                $scope.room.Sex = 0;
+                else {
+                $scope.room.Sex = 1;
+                }
             apiService.put('/api/room/update', $scope.room,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được cập nhật.');

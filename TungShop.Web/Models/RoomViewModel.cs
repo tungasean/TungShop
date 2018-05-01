@@ -20,5 +20,7 @@ namespace TungShop.Web.Models
 
         public int Amount { set; get; }
 
+        public int Sex { set; get; }
+
     }
 }

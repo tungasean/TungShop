@@ -4,9 +4,9 @@
     contractEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', '$stateParams'];
 
     function contractEditController(apiService, $scope, notificationService, $state, $stateParams) {
-        $scope.contract = null; //hop dong moi
-        $scope.contractOld = null; //hop dong cu
-        $scope.ContractStudent = null; //thong tin sinh vien cua hop dong
+        $scope.contract = {}; //hop dong moi
+        $scope.contractOld = ""; //hop dong cu
+        $scope.ContractStudent = {}; //thong tin sinh vien cua hop dong
         $scope.ContractRoom = []; //Danh sach cac phong con cho trong
         $scope.Roomcontracts = []; // Danh sach tat ca cac phong
         $scope.StudentName = ""; //Ten sinh vien
@@ -18,7 +18,7 @@
         function loadcontractDetail() {
             apiService.get('/api/contract/getbyid/' + $stateParams.id, null, function (result) {
                 $scope.contract = result.data;
-                $scope.contractOld = result.data;
+                $scope.contractOld = $scope.contract.RoomID;
                 if ($scope.ContractStudent && $scope.contract) {
                     var student = $scope.ContractStudent.find(function(data) {
                         return data.StudentID == $scope.contract.StudentID;
@@ -36,7 +36,6 @@
         function UpdateRoom(room) {
             apiService.put('/api/room/update', room,
                 function (result) {
-                    $state.go('rooms');
                 }, function (error) {
                     notificationService.displayError('Không thể cập nhật số sinh viên của phòng ' + room.RoomID);
                 });
@@ -48,11 +47,11 @@
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được cập nhật.');
                     //Neu nhu sinh vien chuyen phong
-                    if ($scope.contract.RoomID != $scope.contractOld.RoomID) {
+                    if ($scope.contract.RoomID != $scope.contractOld) {
 
                         //bot sinh vien do khoi phong cu
                         var roomOld = $scope.Roomcontracts.find(function (data) {
-                            return data.RoomID == $scope.contractOld.RoomID;
+                            return data.RoomID == $scope.contractOld;
                         });
                         if (roomOld) {
                             roomOld.Amount = roomOld.Amount - 1 < 0 ? 0 : roomOld.Amount - 1;
@@ -80,6 +79,7 @@
             apiService.get('/api/student/getallparents', null, function (result) {
                 $scope.ContractStudent = result.data;
                 loadcontractDetail();
+                
             }, function () {
                 console.log('Cannot get list Room');
             });

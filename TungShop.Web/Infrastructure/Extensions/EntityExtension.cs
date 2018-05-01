@@ -60,6 +60,19 @@ namespace TungShop.Web.Infrastructure.Extensions
             student.BirthDay = studentVm.BirthDay;
 
         }
+
+        public static void UpdateApproval(this Approval approval, ApprovalViewModel approvalVm)
+        {
+            approval.ApprovalId = approvalVm.ApprovalId;
+            approval.StudentId = approvalVm.StudentId;
+            approval.Name = approvalVm.Name;
+            approval.Sex = approvalVm.Sex;
+            approval.Address = approvalVm.Address;
+            approval.CardNo = approvalVm.CardNo;
+            approval.BirthDay = approvalVm.BirthDay;
+            approval.Status = approvalVm.Status;
+
+        }
         public static void UpdateElectricityWater(this ElectricityWater electricityWater, ElectricityWaterViewModel electricityWaterVm)
         {
             electricityWater.RoomID = electricityWaterVm.RoomID;
@@ -96,6 +109,7 @@ namespace TungShop.Web.Infrastructure.Extensions
             room.RoomName = roomVm.RoomName;
             room.AmountMax = roomVm.AmountMax;
             room.Amount = roomVm.Amount;
+            room.Sex = roomVm.Sex;
         }
 
         public static void UpdateContract(this Contract contract, ContractViewModel contractVm)

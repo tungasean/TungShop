@@ -49,6 +49,7 @@ namespace TungShop.Data
         public DbSet<ApplicationRole> ApplicationRoles { set; get; }
         public DbSet<ApplicationRoleGroup> ApplicationRoleGroups { set; get; }
         public DbSet<ApplicationUserGroup> ApplicationUserGroups { set; get; }
+        public DbSet<Approval> Approvals { set; get; }
 
         public static TungShopDbContext Create()
         {

@@ -11,12 +11,9 @@ namespace TungShop.Model.Models
     {
         // hop dong
         [Key]
-        [Column(Order = 1)]
         [Required]
         public string StudentID { set; get; }
-
-        [Key]
-        [Column(Order = 2)]
+        
         [Required]
         public string RoomID { set; get; }
 

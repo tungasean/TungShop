@@ -28,6 +28,14 @@
                 if (result.data.TotalCount == 0) {
                     notificationService.displayWarning('Không có bản ghi nào được tìm thấy.');
                 }
+                if (result.data.Items)
+                for (var i = 0; i < result.data.Items.length; i++) {
+                    if (result.data.Items[i].Sex === 0)
+                        result.data.Items[i].Type = 'Nam';
+                    else {
+                        result.data.Items[i].Type = 'Nữ';
+                    }
+                }
                 $scope.rooms = result.data.Items;
                 $scope.page = result.data.Page;
                 $scope.pagesCount = result.data.TotalPages;

@@ -4,9 +4,7 @@
     studentAddController.$inject = ['apiService','$scope','notificationService','$state'];
 
     function studentAddController(apiService, $scope, notificationService,$state) {
-        $scope.student = {
-            Name: "Tên sinh viên"
-        }
+        $scope.student = {};
        
         $scope.AddStudent = AddStudent;
 
