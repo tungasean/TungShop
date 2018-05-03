@@ -61,6 +61,14 @@ namespace TungShop.Web.Infrastructure.Extensions
 
         }
 
+        public static void UpdateRoomAsset(this RoomAsset roomAsset, RoomAssetViewModel roomAssetVm)
+        {
+            roomAsset.Amount = roomAssetVm.Amount;
+            roomAsset.AssetsID = roomAssetVm.AssetsID;
+            roomAsset.RoomID = roomAssetVm.RoomID;
+
+        }
+
         public static void UpdateApproval(this Approval approval, ApprovalViewModel approvalVm)
         {
             approval.ApprovalId = approvalVm.ApprovalId;
@@ -85,6 +93,15 @@ namespace TungShop.Web.Infrastructure.Extensions
             electricityWater.PriceElectricity = electricityWaterVm.PriceElectricity;
             electricityWater.PriceWater = electricityWaterVm.PriceWater;
             electricityWater.UserID = electricityWaterVm.UserID;
+
+        }
+        public static void UpdateListAsset(this ListAsset listAsset, ListAssetViewModel listAssetVm)
+        {
+            listAsset.AssetsID = listAssetVm.AssetsID;
+            listAsset.AssetName = listAssetVm.AssetName;
+            listAsset.Amount = listAssetVm.Amount;
+            listAsset.Status = listAssetVm.Status;
+            listAsset.AssetStype = listAssetVm.AssetStype;
 
         }
         public static void UpdateElectricityWaterHistory(this ElectricityWaterHistory electricityWaterHistory, ElectricityWaterHistoryViewModel electricityWaterHistoryVm)

@@ -207,6 +207,8 @@
     <Compile Include="Api\RoomController.cs" />
     <Compile Include="Api\ElectricityWaterController.cs" />
     <Compile Include="Api\ApprovalController.cs" />
+    <Compile Include="Api\RoomAssetController.cs" />
+    <Compile Include="Api\ListAssetController.cs" />
     <Compile Include="Api\StudentController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -232,6 +234,8 @@
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\ListAssetViewModel.cs" />
+    <Compile Include="Models\RoomAssetViewModel.cs" />
     <Compile Include="Models\RoomViewModel.cs" />
     <Compile Include="Models\ContractViewModel.cs" />
     <Compile Include="Models\ElectricityWaterViewModel.cs" />

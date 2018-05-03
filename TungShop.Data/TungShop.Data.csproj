@@ -89,6 +89,8 @@
     <Compile Include="Repositories\RoomRepository.cs" />
     <Compile Include="Repositories\ElectricityWaterRepository.cs" />
     <Compile Include="Repositories\ApprovalRepository.cs" />
+    <Compile Include="Repositories\RoomAssetRepository.cs" />
+    <Compile Include="Repositories\ListAssetRepository.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="Repositories\ProductCategoryRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
