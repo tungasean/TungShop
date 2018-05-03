@@ -50,7 +50,7 @@ namespace TungShop.Web.Api
             {
                 var model = _roomAssetService.GetById(id);
 
-                var responseData = Mapper.Map<RoomAsset, RoomAssetViewModel>(model);
+                var responseData = Mapper.Map<IEnumerable<RoomAsset>, IEnumerable<RoomAssetViewModel>>(model);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
 
@@ -127,13 +127,16 @@ namespace TungShop.Web.Api
                 else
                 {
                     var dbRoomAsset = _roomAssetService.GetById(roomAssetVm.RoomID);
+                    foreach (var value in dbRoomAsset)
+                    {
+                        value.UpdateRoomAsset(roomAssetVm);
 
-                    dbRoomAsset.UpdateRoomAsset(roomAssetVm);
+                        _roomAssetService.Update(value);
+                        _roomAssetService.Save();
+                    }
+                    
 
-                    _roomAssetService.Update(dbRoomAsset);
-                    _roomAssetService.Save();
-
-                    var responseData = Mapper.Map<RoomAsset, RoomAssetViewModel>(dbRoomAsset);
+                    var responseData = Mapper.Map<IEnumerable<RoomAsset>, IEnumerable<RoomAssetViewModel>>(dbRoomAsset);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 
@@ -156,10 +159,13 @@ namespace TungShop.Web.Api
                 else
                 {
                     var dbRoomAsset = _roomAssetService.GetById(id);
-                    var oldRoomAsset = _roomAssetService.Delete(dbRoomAsset);
+                    foreach (var value in dbRoomAsset)
+                    {
+                        var oldRoomAsset = _roomAssetService.Delete(value);
+                    }
                     _roomAssetService.Save();
 
-                    var responseData = Mapper.Map<RoomAsset, RoomAssetViewModel>(oldRoomAsset);
+                    var responseData = Mapper.Map<IEnumerable<RoomAsset>, IEnumerable<RoomAssetViewModel>>(dbRoomAsset);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 

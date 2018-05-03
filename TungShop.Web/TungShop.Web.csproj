@@ -295,7 +295,9 @@
     <Content Include="app\components\rooms\roomEditController.js" />
     <Content Include="app\components\rooms\electricityEditView.html" />
     <Content Include="app\components\rooms\roomEditView.html" />
+    <Content Include="app\components\rooms\assetListController.js" />
     <Content Include="app\components\rooms\roomListController.js" />
+    <Content Include="app\components\rooms\assetListView.html" />
     <Content Include="app\components\rooms\roomListView.html" />
     <Content Include="app\components\rooms\rooms.module.js" />
     <Content Include="app\components\approvals\approvalAddController.js" />

@@ -19,11 +19,13 @@ namespace TungShop.Web.Api
     {
         #region Initialize
         private IListAssetService _listAssetService;
+        private IRoomAssetService _roomAssetService;
 
-        public ListAssetController(IErrorService errorService, IListAssetService listAssetService)
+        public ListAssetController(IErrorService errorService, IListAssetService listAssetService, IRoomAssetService roomAssetService)
             : base(errorService)
         {
             this._listAssetService = listAssetService;
+            this._roomAssetService = roomAssetService;
         }
 
         #endregion
@@ -48,9 +50,18 @@ namespace TungShop.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                var model = _listAssetService.GetById(id);
+                List<ListAsset> listResult = new List<ListAsset>();
+                var listAssign = _roomAssetService.GetById(id);
+                foreach (var assign in listAssign)
+                {
+                    var model = _listAssetService.GetById(assign.AssetsID);
+                    if (model != null)
+                    {
+                        listResult.Add(model);
+                    }
+                }
 
-                var responseData = Mapper.Map<ListAsset, ListAssetViewModel>(model);
+                var responseData = Mapper.Map<IEnumerable<ListAsset>, IEnumerable<ListAssetViewModel>>(listResult);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
 

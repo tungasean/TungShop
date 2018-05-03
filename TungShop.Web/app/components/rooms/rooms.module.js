@@ -30,6 +30,12 @@
                 templateUrl: "/app/components/rooms/electricityEditView.html",
                 controller: "electricityEditController",
                 parent: 'base',
+            })
+            .state('assets', {
+                url: "/assets/:id",
+                templateUrl: "/app/components/rooms/assetListView.html",
+                controller: "assetListController",
+                parent: 'base',
             });
     }
 })();
