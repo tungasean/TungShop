@@ -289,11 +289,15 @@
     <Content Include="app\components\contracts\contractListController.js" />
     <Content Include="app\components\contracts\contractListView.html" />
     <Content Include="app\components\contracts\contracts.module.js" />
+    <Content Include="app\components\rooms\assetAddController.js" />
+    <Content Include="app\components\rooms\assetAddView.html" />
     <Content Include="app\components\rooms\roomAddController.js" />
     <Content Include="app\components\rooms\roomAddView.html" />
     <Content Include="app\components\rooms\electricityEditController.js" />
+    <Content Include="app\components\rooms\assetEditController.js" />
     <Content Include="app\components\rooms\roomEditController.js" />
     <Content Include="app\components\rooms\electricityEditView.html" />
+    <Content Include="app\components\rooms\assetEditView.html" />
     <Content Include="app\components\rooms\roomEditView.html" />
     <Content Include="app\components\rooms\assetListController.js" />
     <Content Include="app\components\rooms\roomListController.js" />

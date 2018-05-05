@@ -46,7 +46,7 @@ namespace TungShop.Web.Api
         }
         [Route("getbyid/{id}")]
         [HttpGet]
-        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
+        public HttpResponseMessage GetById(HttpRequestMessage request, string id)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -62,6 +62,22 @@ namespace TungShop.Web.Api
                 }
 
                 var responseData = Mapper.Map<IEnumerable<ListAsset>, IEnumerable<ListAssetViewModel>>(listResult);
+
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+
+                return response;
+            });
+        }
+
+        [Route("getAssetbyid/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetAssetbyid(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                
+                    var model = _listAssetService.GetById(id);
+                var responseData = Mapper.Map<ListAsset, ListAssetViewModel>(model);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
 

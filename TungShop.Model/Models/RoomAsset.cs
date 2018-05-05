@@ -13,7 +13,7 @@ namespace TungShop.Model.Models
         [Key]
         [Column(Order = 1)]
         [Required]
-        public int RoomID { set; get; } // ma phong
+        public string RoomID { set; get; } // ma phong
 
         [Key]
         [Column(Order = 2)]

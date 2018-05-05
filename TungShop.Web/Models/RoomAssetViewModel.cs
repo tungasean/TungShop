@@ -9,7 +9,7 @@ namespace TungShop.Web.Models
     public class RoomAssetViewModel
     {
         [Required]
-        public int RoomID { set; get; } // ma phong
+        public string RoomID { set; get; } // ma phong
         
         [Required]
         public int AssetsID { set; get; } // ma loai tai san

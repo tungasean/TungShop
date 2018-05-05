@@ -17,7 +17,7 @@ namespace TungShop.Service
 
         //IEnumerable<RoomAsset> GetAll(int keyword);
 
-        IEnumerable<RoomAsset> GetById(int id);
+        IEnumerable<RoomAsset> GetById(string id);
 
         void Save();
     }
@@ -62,7 +62,7 @@ namespace TungShop.Service
 //            return _ProductCategoryRepository.GetMulti(x => x.Status && x.ParentID == parentId);
 //        }
 
-        public IEnumerable<RoomAsset> GetById(int id)
+        public IEnumerable<RoomAsset> GetById(string id)
         {
             return _RoomAssetRepository.GetMulti(x => x.RoomID == id);
         }

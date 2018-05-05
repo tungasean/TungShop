@@ -7,7 +7,7 @@ namespace TungShop.Data.Repositories
 {
     public interface IRoomAssetRepository : IRepository<RoomAsset>
     {
-        IEnumerable<RoomAsset> GetById(int id);
+        IEnumerable<RoomAsset> GetById(string id);
     }
 
     public class RoomAssetRepository : RepositoryBase<RoomAsset>, IRoomAssetRepository
@@ -17,7 +17,7 @@ namespace TungShop.Data.Repositories
         {
         }
 
-        public IEnumerable<RoomAsset> GetById(int RoomAssetId)
+        public IEnumerable<RoomAsset> GetById(string RoomAssetId)
         {
             return this.DbContext.RoomAssets.Where(x => x.RoomID == RoomAssetId);
         }

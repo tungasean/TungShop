@@ -35,7 +35,7 @@
                 }
             apiService.put('/api/room/update', $scope.room,
                 function (result) {
-                    notificationService.displaySuccess(result.data.Name + ' đã được cập nhật.');
+                    notificationService.displaySuccess('Phòng ' + $scope.room + ' đã được cập nhật.');
                     $state.go('rooms');
                 }, function (error) {
                     notificationService.displayError('Cập nhật không thành công.');

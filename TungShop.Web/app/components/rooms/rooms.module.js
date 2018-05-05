@@ -31,6 +31,18 @@
                 controller: "electricityEditController",
                 parent: 'base',
             })
+            .state('edit_asset', {
+                url: "/edit_asset/:id",
+                templateUrl: "/app/components/rooms/assetEditView.html",
+                controller: "assetEditController",
+                parent: 'base',
+            })
+            .state('add_asset', {
+                url: "/add_asset/:id",
+                templateUrl: "/app/components/rooms/assetAddView.html",
+                controller: "assetAddController",
+                parent: 'base',
+            })
             .state('assets', {
                 url: "/assets/:id",
                 templateUrl: "/app/components/rooms/assetListView.html",

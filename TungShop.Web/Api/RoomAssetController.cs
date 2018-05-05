@@ -44,7 +44,7 @@ namespace TungShop.Web.Api
         }
         [Route("getbyid/{id}")]
         [HttpGet]
-        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
+        public HttpResponseMessage GetById(HttpRequestMessage request, string id)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -147,7 +147,7 @@ namespace TungShop.Web.Api
         [Route("delete")]
         [HttpDelete]
         [AllowAnonymous]
-        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
+        public HttpResponseMessage Delete(HttpRequestMessage request, string id)
         {
             return CreateHttpResponse(request, () =>
             {
