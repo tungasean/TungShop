@@ -51,7 +51,7 @@ namespace TungShop.Service
         public IEnumerable<Room> GetAll(string keyword)
         {
             if (!string.IsNullOrEmpty(keyword))
-                return _RoomRepository.GetMulti(x => x.RoomName.Contains(keyword));
+                return _RoomRepository.GetMulti(x => x.RoomID.Contains(keyword));
             else
                 return _RoomRepository.GetAll();
 

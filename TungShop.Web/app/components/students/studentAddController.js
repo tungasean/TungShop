@@ -7,6 +7,16 @@
         $scope.student = {};
        
         $scope.AddStudent = AddStudent;
+        $scope.listType = [
+            {
+                ID: 0,
+                Name: "Nam"
+            },
+            {
+                ID: 1,
+                Name: "Nữ"
+            }
+        ];
 
         function AddStudent() {
             apiService.post('/api/student/create', $scope.student,

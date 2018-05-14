@@ -1,7 +1,7 @@
 ﻿  <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Thêm mới danh mục
+        Thêm mới sinh viên
 
     </h1>
     <ol class="breadcrumb">
@@ -41,7 +41,8 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Giới Tính</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" required name="sex" ng-model="student.Sex">
+                        <select name="parentId" class="form-control" ng-model="student.Sex" ng-options="option.ID as option.Name for option in listType" />
+                        <input type="hidden" name="sex" required ng-model="student.Sex" />
                         <span ng-show="frmAddStudent.sex.$invalid" class="has-error">Phải nhập giới tính</span>
                         <span ng-show="frmAddStudent.sex.$error.maxlength" class="has-error">Giới tính chỉ được 10 ký tự</span>
                     </div>

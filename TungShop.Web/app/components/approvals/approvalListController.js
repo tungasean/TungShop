@@ -36,7 +36,14 @@
                 if (result.data.Items && result.data.TotalCount > 0)
                     for (var i = 0; i < result.data.TotalCount; i++) {
                         if (result.data.Items[i].Status == 1)
+                        {
+                            if (result.data.Items[i].Sex === 0)
+                                result.data.Items[i].SexString = 'Nam';
+                            else
+                                result.data.Items[i].SexString = 'Nữ';
+
                             lst.push(result.data.Items[i]);
+                        }
                     }
                 $scope.approvals = lst;
                 $scope.page = result.data.Page;
@@ -111,7 +118,7 @@
 
                                 //Lay ra phong phu hop cho sinh vien
                                 var resultValue = {};
-                                if ($scope.student.Sex == 'Nam') {
+                                if ($scope.student.Sex == 0) {
                                     
                                     for (var i = 0; i < $scope.ContractRoom.length; i++) {
                                         if ($scope.ContractRoom[i].Sex == 0) {

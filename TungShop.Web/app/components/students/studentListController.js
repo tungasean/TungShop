@@ -27,6 +27,12 @@
                 if (result.data.TotalCount == 0) {
                     notificationService.displayWarning('Không có bản ghi nào được tìm thấy.');
                 }
+                for (var i = 0; i < result.data.TotalCount; i++) {
+                        if (result.data.Items[i].Sex === 0)
+                            result.data.Items[i].SexString = 'Nam';
+                        else
+                            result.data.Items[i].SexString = 'Nữ';
+                }
                 $scope.students = result.data.Items;
                 $scope.page = result.data.Page;
                 $scope.pagesCount = result.data.TotalPages;
@@ -39,7 +45,7 @@
         $scope.deleteStudent = deleteStudent;
 
         function deleteStudent(id) {
-            $ngBootbox.confirm('Bạn có chắc muốn xóa?').then(function () {
+            $ngBootbox.confirm('Khi bạn xóa sinh viên này khỏi danh sách, đồng nghĩa với việc sinh viên này sẽ bị loại khỏi ký túc xá. Bạn có chắc muốn xóa?').then(function () {
                 var config = {
                     params: {
                         id: id

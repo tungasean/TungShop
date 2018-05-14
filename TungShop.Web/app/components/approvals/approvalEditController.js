@@ -7,11 +7,16 @@
         $scope.approval = {};
 
         $scope.UpdateApproval = UpdateApproval;
-//        $scope.GetSeoTitle = GetSeoTitle;
-//
-//        function GetSeoTitle() {
-//            $scope.approval.Alias = commonService.getSeoTitle($scope.approval.Name);
-//        }
+        $scope.listType = [
+            {
+                ID: 0,
+                Name: "Nam"
+            },
+            {
+                ID: 1,
+                Name: "Nữ"
+            }
+        ];
 
         function loadApprovalDetail() {
             apiService.get('/api/approval/getbyid/' + $stateParams.id, null, function (result) {

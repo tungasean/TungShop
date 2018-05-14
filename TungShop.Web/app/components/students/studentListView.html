@@ -31,9 +31,9 @@
                         </span>
                     </div><!-- /input-group -->
                 </div>
-                <div class="col-md-6">
-                    <button class="btn btn-success" ui-sref="add_student">Thêm mới</button>
-                </div>
+<!--                <div class="col-md-6">-->
+<!--                    <button class="btn btn-success" ui-sref="add_student">Thêm mới</button>-->
+<!--                </div>-->
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -44,12 +44,12 @@
                             <th style="width:10%">Giới Tính</th>
                             <th style="width: 10%">Ngày Sinh</th>
                             <th style="width: 20%">Địa Chỉ</th>
-                            <th style="width: 10%">Phòng</th>
+                            <th style="width: 10%"></th>
                         </tr>
                         <tr ng-repeat="item in students">
                             <td>{{item.StudentID}}</td>
                             <td>{{item.Name}}</td>
-                            <td>{{item.Sex}}</td>
+                            <td>{{item.SexString}}</td>
                             <td>
                                 {{item.BirthDay  | date:'dd/MM/yyyy'}}
                             </td>
@@ -57,7 +57,7 @@
                             <td>{{item.Address}}</td>
                             <td>
                                 <button class="btn btn-sm btn-primary" ui-sref="edit_student({id:item.StudentID})"><i class="fa fa-pencil"></i></button>
-                                <button class="btn  btn-sm btn-danger" ng-click="deleteStudent(item.StudentID)"><i class="fa fa-trash"></i></button>
+                                <button class="btn  btn-sm btn-danger" ng-click="deleteStudent(item.StudentID)"><i class="fa fa-trash"> Loại ra</i></button>
                             </td>
                         </tr>
                         <tfoot>

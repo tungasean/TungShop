@@ -18,9 +18,8 @@ namespace TungShop.Model.Models
         public string Name { set; get; }
 
         public DateTime? BirthDay { set; get; }
-
-        [MaxLength(15)]
-        public string Sex { set; get; }
+        
+        public int Sex { set; get; }
 
         [MaxLength(20)]
         public string CardNo { set; get; }

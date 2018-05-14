@@ -7,11 +7,16 @@
         $scope.student = {};
 
         $scope.UpdateStudent = UpdateStudent;
-//        $scope.GetSeoTitle = GetSeoTitle;
-//
-//        function GetSeoTitle() {
-//            $scope.student.Alias = commonService.getSeoTitle($scope.student.Name);
-//        }
+        $scope.listType = [
+            {
+                ID: 0,
+                Name: "Nam"
+            },
+            {
+                ID: 1,
+                Name: "Nữ"
+            }
+        ];
 
         function loadStudentDetail() {
             apiService.get('/api/student/getbyid/' + $stateParams.id, null, function (result) {

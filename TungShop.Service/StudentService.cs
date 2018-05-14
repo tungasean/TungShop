@@ -51,7 +51,7 @@ namespace TungShop.Service
         public IEnumerable<Student> GetAll(string keyword)
         {
             if (!string.IsNullOrEmpty(keyword))
-                return _StudentRepository.GetMulti(x => x.Name.Contains(keyword));
+                return _StudentRepository.GetMulti(x => x.Name.Contains(keyword) || x.StudentID.Contains(keyword));
             else
                 return _StudentRepository.GetAll();
 

@@ -5,8 +5,18 @@
 
     function approvalAddController(apiService, $scope, notificationService,$state) {
         $scope.approval = {
-            Status: 1,
-        }
+            Status: 1
+        };
+        $scope.listType = [
+            {
+                ID: 0,
+                Name: "Nam"
+            },
+            {
+                ID: 1,
+                Name: "Nữ"
+            }
+        ];
        
         $scope.AddApproval = AddApproval;
 

@@ -16,7 +16,7 @@ namespace TungShop.Web.Models
 
         public DateTime? BirthDay { set; get; }
 
-        public string Sex { set; get; }
+        public int Sex { set; get; }
 
         public string CardNo { set; get; }
 
