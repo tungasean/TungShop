@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller("approvalListController", approvalListController);
 
-    approvalListController.$inject = ['$scope', 'apiService', 'notificationService', '$ngBootbox'];
+    approvalListController.$inject = ['$scope', 'apiService', 'notificationService', '$ngBootbox', '$state'];
 
-    function approvalListController($scope, apiService, notificationService, $ngBootbox) {
+    function approvalListController($scope, apiService, notificationService, $ngBootbox,$state) {
         $scope.approvals = [];
         $scope.page = 0;
         $scope.pagesCount = 0;
@@ -35,7 +35,7 @@
                 var lst = [];
                 if (result.data.Items && result.data.TotalCount > 0)
                     for (var i = 0; i < result.data.TotalCount; i++) {
-                        if (result.data.Items[i].Status == 1)
+                        if (result.data.Items[i] && result.data.Items[i].Status == 1)
                         {
                             if (result.data.Items[i].Sex === 0)
                                 result.data.Items[i].SexString = 'Nam';
@@ -135,7 +135,9 @@
                                     }
                                 }
                                 //Them hop dong
-                                
+
+                                $state.go('add_contract',{id:value.StudentId});
+                                return;
                                 $scope.contract.RoomID = resultValue.RoomID;
                                 $scope.contract.StudentID = value.StudentId;
                                 $scope.contract.TimeSign = new Date(Date.now());

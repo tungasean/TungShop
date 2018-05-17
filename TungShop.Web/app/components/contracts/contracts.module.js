@@ -14,7 +14,7 @@
             controller: "contractListController"
         })
             .state('add_contract', {
-                url: "/add_contract",
+                url: "/add_contract/:id",
                 parent: 'base',
                 templateUrl: "/app/components/contracts/contractAddView.html",
                 controller: "contractAddController"
