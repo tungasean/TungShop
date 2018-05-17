@@ -65,6 +65,7 @@
     <Compile Include="ApprovalService.cs" />
     <Compile Include="RoomAssetService.cs" />
     <Compile Include="ListAssetService.cs" />
+    <Compile Include="StudentDisciplineService.cs" />
     <Compile Include="StudentService.cs" />
     <Compile Include="ProductCategoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

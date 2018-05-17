@@ -60,25 +60,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201805010853065_update1.cs" />
-    <Compile Include="Migrations\201805010853065_update1.Designer.cs">
-      <DependentUpon>201805010853065_update1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805011452343_update3.cs" />
-    <Compile Include="Migrations\201805011452343_update3.Designer.cs">
-      <DependentUpon>201805011452343_update3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805052224513_a.cs" />
-    <Compile Include="Migrations\201805052224513_a.Designer.cs">
-      <DependentUpon>201805052224513_a.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805060203105_a1.cs" />
-    <Compile Include="Migrations\201805060203105_a1.Designer.cs">
-      <DependentUpon>201805060203105_a1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805060213195_a2.cs" />
-    <Compile Include="Migrations\201805060213195_a2.Designer.cs">
-      <DependentUpon>201805060213195_a2.cs</DependentUpon>
+    <Compile Include="Migrations\201805171617409_addnew.cs" />
+    <Compile Include="Migrations\201805171617409_addnew.Designer.cs">
+      <DependentUpon>201805171617409_addnew.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +87,7 @@
     <Compile Include="Repositories\ApprovalRepository.cs" />
     <Compile Include="Repositories\RoomAssetRepository.cs" />
     <Compile Include="Repositories\ListAssetRepository.cs" />
+    <Compile Include="Repositories\StudentDisciplineRepository.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="Repositories\ProductCategoryRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
@@ -131,20 +116,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805010853065_update1.resx">
-      <DependentUpon>201805010853065_update1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805011452343_update3.resx">
-      <DependentUpon>201805011452343_update3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805052224513_a.resx">
-      <DependentUpon>201805052224513_a.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805060203105_a1.resx">
-      <DependentUpon>201805060203105_a1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805060213195_a2.resx">
-      <DependentUpon>201805060213195_a2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805171617409_addnew.resx">
+      <DependentUpon>201805171617409_addnew.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

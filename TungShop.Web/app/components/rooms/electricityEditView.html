@@ -88,7 +88,7 @@
                         <td>{{item1.PriceElectricity}}</td>
                         <td>{{item1.Money}}</td>
                         <td>{{item1.TimeChange | date:'dd/MM/yyyy hh:mm:ss'}}</td>
-                        <td><button class="btn btn-sm btn-default" ng-click="exportPdf(item1.ID)"><i class="fa fa-file-excel-o"></i>In hóa đơn</button></td>
+                        <td><button ng-if="!item1.IsPrinted" class="btn btn-sm btn-default" ng-click="exportPdf(item1.ID)"><i class="fa fa-file-excel-o"></i>In hóa đơn</button></td>
 </tr>
                 </table>
             </div>

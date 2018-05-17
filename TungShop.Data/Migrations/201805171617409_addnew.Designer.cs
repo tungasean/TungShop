@@ -7,13 +7,13 @@ namespace TungShop.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class a1 : IMigrationMetadata
+    public sealed partial class addnew : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(a1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addnew));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805060203105_a1"; }
+            get { return "201805171617409_addnew"; }
         }
         
         string IMigrationMetadata.Source

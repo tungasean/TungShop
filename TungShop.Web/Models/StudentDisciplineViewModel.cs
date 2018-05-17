@@ -6,23 +6,18 @@ using System.Web;
 
 namespace TungShop.Web.Models
 {
-    public class StudentViewModel
+    public class StudentDisciplineViewModel
     {
+        public int ID { set; get; }
+
         [Required]
         public string StudentID { set; get; }
 
         [Required]
+        [MaxLength(256)]
         public string Name { set; get; }
 
-        public DateTime? BirthDay { set; get; }
-
-        public int Sex { set; get; }
-
-        public string CardNo { set; get; }
-
-        public string Address { set; get; }
-
-        public int IsOut { set; get; }
+        public string InfoDiscipline { set; get; }
 
     }
 }

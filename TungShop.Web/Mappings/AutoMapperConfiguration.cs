@@ -25,6 +25,7 @@ namespace TungShop.Web.Mappings
             Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>();
 
             Mapper.CreateMap<Student, StudentViewModel>();
+            Mapper.CreateMap<StudentDiscipline, StudentDisciplineViewModel>();
             Mapper.CreateMap<Approval, ApprovalViewModel>();
             Mapper.CreateMap<Room, RoomViewModel>();
             Mapper.CreateMap<Contract, ContractViewModel>();

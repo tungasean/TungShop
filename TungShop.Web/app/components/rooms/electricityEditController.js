@@ -26,6 +26,13 @@
             $scope.roomHistorys = [];
             apiService.get('/api/electricityWaterHistory/getbyid/' + $stateParams.id, null, function (result) {
                 $scope.roomHistorys = result.data;
+                if ($scope.roomHistorys)
+                for (var i = 0; i < $scope.roomHistorys.length; i++)
+                {
+                    $scope.roomHistorys[i].IsPrinted = false;
+                    if ($scope.roomHistorys[i].IsPrint != 0 )
+                        $scope.roomHistorys[i].IsPrinted = true;
+                }
                 loadelectricityDetail();
             }, function (error) {
                 notificationService.displayError(error.data);
@@ -38,6 +45,7 @@
                     id: IdHistory
                 }
             }
+
             apiService.get('/api/electricityWaterHistory/ExportPdf',
                 config,
                 function(response) {

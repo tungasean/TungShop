@@ -58,6 +58,16 @@ namespace TungShop.Web.Infrastructure.Extensions
             student.Address = studentVm.Address;
             student.CardNo = studentVm.CardNo;
             student.BirthDay = studentVm.BirthDay;
+            student.IsOut = studentVm.IsOut;
+
+        }
+
+        public static void UpdateStudentDiscipline(this StudentDiscipline student, StudentDisciplineViewModel studentVm)
+        {
+            student.ID = studentVm.ID;
+            student.StudentID = studentVm.StudentID;
+            student.Name = studentVm.Name;
+            student.InfoDiscipline = studentVm.InfoDiscipline;
 
         }
 
@@ -117,6 +127,7 @@ namespace TungShop.Web.Infrastructure.Extensions
             electricityWaterHistory.PriceElectricity = electricityWaterHistoryVm.PriceElectricity;
             electricityWaterHistory.PriceWater = electricityWaterHistoryVm.PriceWater;
             electricityWaterHistory.UserID = electricityWaterHistoryVm.UserID;
+            electricityWaterHistory.IsPrint = electricityWaterHistoryVm.IsPrint;
             electricityWaterHistory.TimeChange = electricityWaterHistoryVm.TimeChange;
 
         }

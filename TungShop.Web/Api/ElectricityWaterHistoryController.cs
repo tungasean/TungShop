@@ -120,7 +120,7 @@ namespace TungShop.Web.Api
         }
         [HttpGet]
         [Route("ExportPdf")]
-        public async Task<HttpResponseMessage> ExportPdf(HttpRequestMessage request, string id)
+        public async Task<HttpResponseMessage> ExportPdf(HttpRequestMessage request, int id)
         {
             string fileName = string.Concat("Invoice_" + DateTime.Now.ToString("yyyyMMddhhmmssfff") + ".pdf");
             var folderReport = ConfigHelper.GetByKey("ReportFolder");
@@ -134,13 +134,29 @@ namespace TungShop.Web.Api
             {
                 var template = File.ReadAllText(HttpContext.Current.Server.MapPath("/Assets/admin/templates/product-detail.html"));
                 var replaces = new Dictionary<string, string>();
-                var product = _ElectricityWaterHistoryService.GetById(id);
-
-//                replaces.Add("{{ProductName}}", product.Name);
-//                replaces.Add("{{Price}}", product.Price.ToString("N0"));
-//                replaces.Add("{{Description}}", product.Description);
-//                replaces.Add("{{Warranty}}", product.Warranty + " tháng");
-
+                var electricityWater = _ElectricityWaterHistoryService.GetById(id);
+                //Cap nhat lai lich su la da in hoa don
+                if (electricityWater != null)
+                {
+                    electricityWater.IsPrint = 1;
+                    _ElectricityWaterHistoryService.Update(electricityWater);
+                    _ElectricityWaterHistoryService.Save();
+                }
+                
+                //tao invoice
+                if (electricityWater != null)
+                {
+                    replaces.Add("{{Month}}", electricityWater.Month);
+                    replaces.Add("{{Room}}", electricityWater.RoomID);
+                    replaces.Add("{{SoDienCu}}", electricityWater.EletricityOld.ToString("N0"));
+                    replaces.Add("{{SoDienMoi}}", electricityWater.EletricityNew.ToString("N0"));
+                    replaces.Add("{{GiaDien}}", electricityWater.PriceElectricity.ToString() );
+                    replaces.Add("{{SoNuocCu}}", electricityWater.WaterOld.ToString("N0"));
+                    replaces.Add("{{SoNuocMoi}}", electricityWater.WaterNew.ToString("N0"));
+                    replaces.Add("{{GiaNuoc}}", electricityWater.PriceWater.ToString() );
+                    replaces.Add("{{ThanhTien}}", electricityWater.Money.ToString() );
+                }
+                
                 template = template.Parse(replaces);
 
                 await ReportHelper.GeneratePdf(template, fullPath);
@@ -150,6 +166,35 @@ namespace TungShop.Web.Api
             {
                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
             }
+        }
+
+        [Route("update")]
+        [HttpPut]
+        [AllowAnonymous]
+        public HttpResponseMessage Update(HttpRequestMessage request, ElectricityWaterHistoryViewModel ElectricityWaterVm)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var dbElectricityWaterHistory = _ElectricityWaterHistoryService.GetById(ElectricityWaterVm.ID);
+
+                    dbElectricityWaterHistory.UpdateElectricityWaterHistory(ElectricityWaterVm);
+
+                    _ElectricityWaterHistoryService.Update(dbElectricityWaterHistory);
+                    _ElectricityWaterHistoryService.Save();
+
+                    var responseData = Mapper.Map<ElectricityWaterHistory, ElectricityWaterHistoryViewModel>(dbElectricityWaterHistory);
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
+
+                return response;
+            });
         }
     }
 }

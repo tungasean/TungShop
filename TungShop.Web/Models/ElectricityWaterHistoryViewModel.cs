@@ -31,6 +31,8 @@ namespace TungShop.Web.Models
 
         public int UserID { set; get; }
 
+        public int IsPrint { set; get; }
+
         public DateTime TimeChange { set; get; }
 
     }

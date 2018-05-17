@@ -37,6 +37,7 @@ namespace TungShop.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
         public DbSet<Student> Students { set; get; }//sinh vien
+        public DbSet<StudentDiscipline> StudentDisciplines { set; get; }// thong tin ky luat cua sinh vien
         public DbSet<Room> Rooms { set; get; } //phong
         public DbSet<ListAsset> ListAssets { set; get; } //danh muc tai san
         public DbSet<RoomAsset> RoomAssets { set; get; } //tai san phong

@@ -76,6 +76,7 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\ElectricityWater.cs" />
     <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\StudentDiscipline.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\PostCategory.cs" />
     <Compile Include="Models\PostTag.cs" />

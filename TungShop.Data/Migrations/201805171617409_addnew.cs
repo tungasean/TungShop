@@ -3,7 +3,7 @@ namespace TungShop.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class update1 : DbMigration
+    public partial class addnew : DbMigration
     {
         public override void Up()
         {
@@ -126,7 +126,7 @@ namespace TungShop.Data.Migrations
                         StudentId = c.String(),
                         Name = c.String(),
                         BirthDay = c.DateTime(),
-                        Sex = c.String(maxLength: 15),
+                        Sex = c.Int(nullable: false),
                         CardNo = c.String(maxLength: 20),
                         Address = c.String(maxLength: 200),
                         Status = c.Int(nullable: false),
@@ -150,7 +150,8 @@ namespace TungShop.Data.Migrations
                 "dbo.ElectricityWaterHistorys",
                 c => new
                     {
-                        RoomID = c.String(nullable: false, maxLength: 128),
+                        ID = c.Int(nullable: false, identity: true),
+                        RoomID = c.String(nullable: false),
                         Month = c.String(),
                         WaterNew = c.Int(nullable: false),
                         WaterOld = c.Int(nullable: false),
@@ -160,9 +161,10 @@ namespace TungShop.Data.Migrations
                         PriceElectricity = c.Int(nullable: false),
                         PriceWater = c.Int(nullable: false),
                         UserID = c.Int(nullable: false),
+                        IsPrint = c.Int(nullable: false),
                         TimeChange = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.RoomID);
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.ElectricityWaters",
@@ -449,7 +451,7 @@ namespace TungShop.Data.Migrations
                 "dbo.RoomAssets",
                 c => new
                     {
-                        RoomID = c.Int(nullable: false),
+                        RoomID = c.String(nullable: false, maxLength: 128),
                         AssetsID = c.Int(nullable: false),
                         Amount = c.Int(nullable: false),
                     })
@@ -490,7 +492,7 @@ namespace TungShop.Data.Migrations
                         StudentID = c.String(nullable: false, maxLength: 128),
                         Name = c.String(nullable: false, maxLength: 256),
                         BirthDay = c.DateTime(),
-                        Sex = c.String(maxLength: 15),
+                        Sex = c.Int(nullable: false),
                         CardNo = c.String(maxLength: 20),
                         Address = c.String(maxLength: 200),
                     })
