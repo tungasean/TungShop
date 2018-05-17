@@ -29,13 +29,13 @@
                 }
             }
             apiService.get('/api/approval/getall', config, function (result) {
-                if (result.data.TotalCount == 0) {
+                if (result.data.TotalCount === 0) {
                     notificationService.displayWarning('Không có bản ghi nào được tìm thấy.');
                 }
                 var lst = [];
                 if (result.data.Items && result.data.TotalCount > 0)
                     for (var i = 0; i < result.data.TotalCount; i++) {
-                        if (result.data.Items[i] && result.data.Items[i].Status == 1)
+                        if (result.data.Items[i] && result.data.Items[i].Status === 1)
                         {
                             if (result.data.Items[i].Sex === 0)
                                 result.data.Items[i].SexString = 'Nam';

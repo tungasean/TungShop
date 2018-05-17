@@ -32,6 +32,25 @@
             });
         }
 
+        $scope.exportPdf = function(IdHistory) {
+            var config = {
+                params: {
+                    id: IdHistory
+                }
+            }
+            apiService.get('/api/electricityWaterHistory/ExportPdf',
+                config,
+                function(response) {
+                    if (response.status = 200) {
+                        window.location.href = response.data.Message;
+                    }
+                },
+                function(error) {
+                    notificationService.displayError(error);
+
+                });
+        };
+
         $scope.Change = function () {
             if (!$scope.electricityWater.WaterNew) $scope.electricityWater.WaterNew = 0;
             if (!$scope.electricityWater.WaterOld) $scope.electricityWater.WaterOld = 0;

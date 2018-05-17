@@ -1,10 +1,17 @@
 ﻿using AutoMapper;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
+using System.Web.Script.Serialization;
+using TungShop.Common;
+using TungShop.Common;
 using TungShop.Model.Models;
 using TungShop.Service;
 using TungShop.Web.Infrastructure.Core;
@@ -110,6 +117,39 @@ namespace TungShop.Web.Api
 
                 return response;
             });
+        }
+        [HttpGet]
+        [Route("ExportPdf")]
+        public async Task<HttpResponseMessage> ExportPdf(HttpRequestMessage request, string id)
+        {
+            string fileName = string.Concat("Invoice_" + DateTime.Now.ToString("yyyyMMddhhmmssfff") + ".pdf");
+            var folderReport = ConfigHelper.GetByKey("ReportFolder");
+            string filePath = HttpContext.Current.Server.MapPath(folderReport);
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            string fullPath = Path.Combine(filePath, fileName);
+            try
+            {
+                var template = File.ReadAllText(HttpContext.Current.Server.MapPath("/Assets/admin/templates/product-detail.html"));
+                var replaces = new Dictionary<string, string>();
+                var product = _ElectricityWaterHistoryService.GetById(id);
+
+//                replaces.Add("{{ProductName}}", product.Name);
+//                replaces.Add("{{Price}}", product.Price.ToString("N0"));
+//                replaces.Add("{{Description}}", product.Description);
+//                replaces.Add("{{Warranty}}", product.Warranty + " tháng");
+
+                template = template.Parse(replaces);
+
+                await ReportHelper.GeneratePdf(template, fullPath);
+                return request.CreateErrorResponse(HttpStatusCode.OK, Path.Combine(folderReport, fileName));
+            }
+            catch (Exception ex)
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
     }
 }
