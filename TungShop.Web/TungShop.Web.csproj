@@ -339,6 +339,8 @@
     <Content Include="app\components\approvals\approvalListController.js" />
     <Content Include="app\components\approvals\approvalListView.html" />
     <Content Include="app\components\approvals\approvals.module.js" />
+    <Content Include="app\components\students\studentDisciplineListView.html" />
+    <Content Include="app\components\students\studenDisciplinetListController.js" />
     <Content Include="app\components\students\students.module.js" />
     <Content Include="app\components\students\studentAddController.js" />
     <Content Include="app\components\students\studentAddView.html" />

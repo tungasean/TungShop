@@ -24,6 +24,12 @@
                 templateUrl: "/app/components/students/studentEditView.html",
                 controller: "studentEditController",
                 parent: 'base',
+            })
+            .state('student_disciplines', {
+                url: "/student_disciplines/:id",
+                templateUrl: "/app/components/students/studentDisciplineListView.html",
+                controller: "studenDisciplinetListController",
+                parent: 'base',
             });
     }
 })();
