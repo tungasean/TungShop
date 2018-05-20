@@ -30,6 +30,12 @@
                 templateUrl: "/app/components/students/studentDisciplineListView.html",
                 controller: "studenDisciplinetListController",
                 parent: 'base',
+            })
+            .state('add_studentDiscipline', {
+                url: "/add_studentDiscipline/:id",
+                templateUrl: "/app/components/students/studentDisciplineAddView.html",
+                controller: "studentDisciplineAddController",
+                parent: 'base',
             });
     }
 })();

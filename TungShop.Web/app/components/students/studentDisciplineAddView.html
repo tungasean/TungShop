@@ -1,0 +1,40 @@
+﻿  <!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Thêm mới sinh viên
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li>Quản Lý</li>
+        <li><a ui-sref="students">Danh Sách Sinh Viên</a></li>
+        <li class="active">Thêm mới</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Thêm mới</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" novalidate name="frmAddStudent" role="form" ng-submit="AddStudent()">
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Nội dung kỷ luật</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-maxlength="200" name="infoDiscipline" ng-model="studentDiscipline.InfoDiscipline">
+                        <span ng-show="frmAddStudent.infoDiscipline.$invalid" class="has-error">Phải nhập thông tin kỷ luật</span>
+
+                    </div>
+                </div>
+                
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <button ui-sref="student_disciplines({id:studentId})" class="btn btn-default">Hủy</button>
+                <button type="submit" ng-disabled="frmAddStudent.$invalid" class="btn btn-success pull-right">Lưu</button>
+            </div><!-- /.box-footer -->
+        </form>
+    </div><!-- /.box -->
+</section><!-- /.content -->

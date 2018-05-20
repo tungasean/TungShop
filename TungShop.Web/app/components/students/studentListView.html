@@ -24,6 +24,12 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-6">
+                    <div class="col-sm-6">
+                        <select name="parentId" class="form-control" ng-model="Filter" ng-options="option.ID as option.Name for option in ListFilter" />
+                        <input type="hidden" name="Status" required ng-model="Filter" />
+                    </div><!-- /input-group -->
+                </div>
+                <div class="col-md-6">
                     <div class="input-group">
                         <input type="text" class="form-control" ng-model="keyword" placeholder="Từ khóa">
                         <span class="input-group-btn">
@@ -31,9 +37,9 @@
                         </span>
                     </div><!-- /input-group -->
                 </div>
-<!--                <div class="col-md-6">-->
-<!--                    <button class="btn btn-success" ui-sref="add_student">Thêm mới</button>-->
-<!--                </div>-->
+                <!--                <div class="col-md-6">-->
+                <!--                    <button class="btn btn-success" ui-sref="add_student">Thêm mới</button>-->
+                <!--                </div>-->
             </div>
             <div class="row">
                 <div class="col-md-12">

@@ -19,11 +19,13 @@ namespace TungShop.Web.Api
     {
         #region Initialize
         private IStudentDisciplineService _studentDisciplineService;
+        private IStudentService _studentService;
 
-        public StudentDisciplineController(IErrorService errorService, IStudentDisciplineService studentDisciplineService)
+        public StudentDisciplineController(IErrorService errorService, IStudentDisciplineService studentDisciplineService, IStudentService studentService)
             : base(errorService)
         {
             this._studentDisciplineService = studentDisciplineService;
+            this._studentService = studentService;
         }
 
         #endregion
@@ -116,10 +118,15 @@ namespace TungShop.Web.Api
                 else
                 {
                     var newStudentDiscipline = new StudentDiscipline();
-                    newStudentDiscipline.UpdateStudentDiscipline(studentDisciplineVm);
-                    _studentDisciplineService.Add(newStudentDiscipline);
-                    _studentDisciplineService.Save();
-
+                    //lay ten sinh vien
+                    var model = _studentService.GetById(studentDisciplineVm.StudentID);
+                    if (model != null)
+                    {
+                        studentDisciplineVm.Name = model.Name;
+                        newStudentDiscipline.UpdateStudentDiscipline(studentDisciplineVm);
+                        _studentDisciplineService.Add(newStudentDiscipline);
+                        _studentDisciplineService.Save();
+                    }
                     var responseData = Mapper.Map<StudentDiscipline, StudentDisciplineViewModel>(newStudentDiscipline);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
