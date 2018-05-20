@@ -19,11 +19,13 @@ namespace TungShop.Web.Api
     {
         #region Initialize
         private IStudentService _studentService;
+        private IContractService _ContractService;
 
-        public StudentController(IErrorService errorService, IStudentService studentService)
+        public StudentController(IErrorService errorService, IStudentService studentService, IContractService ContractService)
             : base(errorService)
         {
             this._studentService = studentService;
+            this._ContractService = ContractService;
         }
 
         #endregion
@@ -158,6 +160,10 @@ namespace TungShop.Web.Api
                     var dbStudent = _studentService.GetById(id);
                     var oldStudent = _studentService.Delete(dbStudent);
                     _studentService.Save();
+                    //Xoa hop dong
+                    var dbApproval = _ContractService.GetSingleByCondition(id);
+                    var oldApproval = _ContractService.Delete(dbApproval);
+                    _ContractService.Save();
 
                     var responseData = Mapper.Map<Student, StudentViewModel>(oldStudent);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
