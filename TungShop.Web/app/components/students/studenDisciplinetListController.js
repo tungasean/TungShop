@@ -21,6 +21,22 @@
             });
         };
 
+        $scope.deleteStudentDiscipline = deleteStudentDiscipline;
+
+        function deleteStudentDiscipline(id) {
+                var config = {
+                    params: {
+                        id: id
+                    }
+                };
+                apiService.del('/api/studentDiscipline/delete', config, function () {
+                    notificationService.displaySuccess('Xóa thành công');
+                    $scope.getstudents();
+                }, function () {
+                    notificationService.displayError('Xóa không thành công');
+                });
+        }
+
         $scope.deleteStudent = deleteStudent;
 
         function deleteStudent(id) {
@@ -29,13 +45,13 @@
                     params: {
                         id: id
                     }
-                };
+                }
                 apiService.del('/api/student/delete', config, function () {
                     notificationService.displaySuccess('Xóa thành công');
                     $scope.search();
                 }, function () {
                     notificationService.displayError('Xóa không thành công');
-                });
+                })
             });
         }
 
