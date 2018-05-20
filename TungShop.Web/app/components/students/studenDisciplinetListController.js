@@ -9,7 +9,7 @@
         $scope.lstKyLuat = [];
         
         $scope.getstudents = function() {
-            apiService.get('/api/studentDiscipline/getbyid/' + $scope.StudentId, null, function (result) {
+            apiService.get('/api/studentDiscipline/getbystudentid/' + $scope.StudentId, null, function (result) {
                 if (result.data === null) {
                     notificationService.displayWarning('Không có bản ghi nào được tìm thấy.');
                 }

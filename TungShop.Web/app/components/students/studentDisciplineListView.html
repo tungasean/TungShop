@@ -34,20 +34,13 @@
                         <tr>
                             <th style="width: 10%">Mã Sinh Viên</th>
                             <th style="width:30%">Tên Sinh Viên</th>
-                            <th style="width:10%">Giới Tính</th>
-                            <th style="width: 10%">Ngày Sinh</th>
-                            <th style="width: 20%">Địa Chỉ</th>
+                            <th style="width:50%">Thông Tin Kỷ Luật</th>
                             <th style="width: 10%"></th>
                         </tr>
                         <tr ng-repeat="item in lstKyLuat">
                             <td>{{item.StudentID}}</td>
                             <td>{{item.Name}}</td>
-                            <td>{{item.SexString}}</td>
-                            <td>
-                                {{item.BirthDay  | date:'dd/MM/yyyy'}}
-                            </td>
-                            <!--class="badge bg-red"-->
-                            <td>{{item.Address}}</td>
+                            <td>{{item.InfoDiscipline}}</td>
                             <td>
                                 <button class="btn btn-sm btn-primary" ui-sref="edit_student({id:item.StudentID})"><i class="fa fa-pencil"></i></button>
                                 <button class="btn  btn-sm btn-danger" ng-click="deleteStudent(item.StudentID)"><i class="fa fa-trash"> Loại ra</i></button>

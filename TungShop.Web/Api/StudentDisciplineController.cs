@@ -42,13 +42,13 @@ namespace TungShop.Web.Api
                 return response;
             });
         }
-        [Route("getbyid/{id}")]
+        [Route("getbystudentid/{id}")]
         [HttpGet]
-        public HttpResponseMessage GetById(HttpRequestMessage request, string studentId)
+        public HttpResponseMessage GetById(HttpRequestMessage request, string id)
         {
             return CreateHttpResponse(request, () =>
             {
-                var model = _studentDisciplineService.GetById(studentId);
+                var model = _studentDisciplineService.GetById(id);
 
                 var responseData = Mapper.Map<IEnumerable<StudentDiscipline>, IEnumerable<StudentDisciplineViewModel>>(model);
 
@@ -58,31 +58,47 @@ namespace TungShop.Web.Api
             });
         }
 
-//        [Route("getall")]
-//        [HttpGet]
-//        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
-//        {
-//            return CreateHttpResponse(request, () =>
-//            {
-//                int totalRow = 0;
-//                var model = _studentDisciplineService.GetAll(keyword);
-//
-//                totalRow = model.Count();
-//                var query = model.OrderByDescending(x => x.StudentDisciplineID).Skip(page * pageSize).Take(pageSize);
-//
-//                var responseData = Mapper.Map<IEnumerable<StudentDiscipline>, IEnumerable<StudentDisciplineViewModel>>(query);
-//
-//                var paginationSet = new PaginationSet<StudentDisciplineViewModel>()
-//                {
-//                    Items = responseData,
-//                    Page = page,
-//                    TotalCount = totalRow,
-//                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
-//                };
-//                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
-//                return response;
-//            });
-//        }
+        [Route("getbyid/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _studentDisciplineService.GetById(id);
+
+                var responseData = Mapper.Map<StudentDiscipline, StudentDisciplineViewModel>(model);
+
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+
+                return response;
+            });
+        }
+
+        [Route("getall")]
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                int totalRow = 0;
+                var model = _studentDisciplineService.GetAll();
+
+                totalRow = model.Count();
+                var query = model.OrderByDescending(x => x.StudentID).Skip(page * pageSize).Take(pageSize);
+
+                var responseData = Mapper.Map<IEnumerable<StudentDiscipline>, IEnumerable<StudentDisciplineViewModel>>(query);
+
+                var paginationSet = new PaginationSet<StudentDisciplineViewModel>()
+                {
+                    Items = responseData,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                };
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                return response;
+            });
+        }
 
 
         [Route("create")]
@@ -111,35 +127,6 @@ namespace TungShop.Web.Api
                 return response;
             });
         }
-
-//        [Route("update")]
-//        [HttpPut]
-//        [AllowAnonymous]
-//        public HttpResponseMessage Update(HttpRequestMessage request, StudentDisciplineViewModel studentDisciplineVm)
-//        {
-//            return CreateHttpResponse(request, () =>
-//            {
-//                HttpResponseMessage response = null;
-//                if (!ModelState.IsValid)
-//                {
-//                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
-//                }
-//                else
-//                {
-//                    var dbStudentDiscipline = _studentDisciplineService.GetById(studentDisciplineVm.StudentDisciplineID);
-//
-//                    dbStudentDiscipline.UpdateStudentDiscipline(studentDisciplineVm);
-//
-//                    _studentDisciplineService.Update(dbStudentDiscipline);
-//                    _studentDisciplineService.Save();
-//
-//                    var responseData = Mapper.Map<StudentDiscipline, StudentDisciplineViewModel>(dbStudentDiscipline);
-//                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
-//                }
-//
-//                return response;
-//            });
-//        }
 
         [Route("delete")]
         [HttpDelete]
