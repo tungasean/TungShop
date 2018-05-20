@@ -47,7 +47,7 @@
                             <th style="width:20%">Ghi Chú</th>
                         </tr>
                         <tr ng-repeat="item in contracts">
-                            <td><a ui-sref="edit_contract({id:item.contractID})">{{item.RoomID}}</a></td>
+                            <td>{{item.RoomID}}</td>
                             <td>{{item.StudentID}}</td>
                             <td>{{item.TimeSign | date:'dd/MM/yyyy'}}</td>
                             <td>{{item.Term}}</td>

@@ -17,6 +17,14 @@
         $scope.Addcontract = function() {
             apiService.post('/api/contract/create', $scope.contract,
                 function (result) {
+                    var roomNew = $scope.Roomcontracts.find(function (data) {
+                        return data.RoomID == $scope.contract.RoomID;
+                    });
+                    if (roomNew) {
+                        roomNew.Amount = roomNew.Amount + 1;
+                        if (roomNew.Amount <= roomNew.AmountMax)
+                            UpdateRoom(roomNew);
+                    }
                     notificationService.displaySuccess(result.data.Name + ' đã được thêm mới.');
                     $state.go('approvals');
                 }, function (error) {
@@ -39,6 +47,15 @@
             }, function () {
                 console.log('Cannot get list Room');
             });
+        }
+
+        //cap nhat so sinh vien cua phong
+        function UpdateRoom(room) {
+            apiService.put('/api/room/update', room,
+                function (result) {
+                }, function (error) {
+                    notificationService.displayError('Không thể cập nhật số sinh viên của phòng ' + room.RoomID);
+                });
         }
 
         function loadRoomcontract() {

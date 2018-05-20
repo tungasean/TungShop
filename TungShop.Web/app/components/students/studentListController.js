@@ -63,11 +63,11 @@
                 for (var i = 0; i < result.data.TotalCount; i++) {
 
                     if ($scope.Filter === 1) {
-                        if ($scope.DicKyLuat[result.data.Items[i].StudentID])
+                        if (!$scope.DicKyLuat[result.data.Items[i].StudentID])
                             continue;
                     }
                     if ($scope.Filter === 2) {
-                        if (!$scope.DicKyLuat[result.data.Items[i].StudentID])
+                        if ($scope.DicKyLuat[result.data.Items[i].StudentID])
                             continue;
                     }
 

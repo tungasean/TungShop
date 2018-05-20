@@ -157,14 +157,21 @@ namespace TungShop.Web.Api
                 }
                 else
                 {
+                    var oldStudent = new Student();
                     var dbStudent = _studentService.GetById(id);
-                    var oldStudent = _studentService.Delete(dbStudent);
-                    _studentService.Save();
+                    if (dbStudent != null)
+                    {
+                        oldStudent = _studentService.Delete(dbStudent);
+                        _studentService.Save();
+                        
+                    }
                     //Xoa hop dong
                     var dbApproval = _ContractService.GetSingleByCondition(id);
-                    var oldApproval = _ContractService.Delete(dbApproval);
-                    _ContractService.Save();
-
+                    if (dbApproval != null)
+                    {
+                        var oldApproval = _ContractService.Delete(dbApproval);
+                        _ContractService.Save();
+                    }
                     var responseData = Mapper.Map<Student, StudentViewModel>(oldStudent);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }

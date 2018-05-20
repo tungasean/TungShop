@@ -48,7 +48,7 @@
                 }
                 apiService.del('/api/student/delete', config, function () {
                     notificationService.displaySuccess('Xóa thành công');
-                    $scope.search();
+                    $state.go('students');
                 }, function () {
                     notificationService.displayError('Xóa không thành công');
                 })
