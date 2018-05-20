@@ -19,6 +19,12 @@
                 templateUrl: "/app/components/approvals/approvalAddView.html",
                 controller: "approvalAddController"
             })
+            .state('approval_import', {
+                url: "/approval_import",
+                parent: 'base',
+                templateUrl: "/app/components/approvals/approvalImportView.html",
+                controller: "approvalImportController"
+            })
             .state('edit_approval', {
                 url: "/edit_approval/:id",
                 templateUrl: "/app/components/approvals/approvalEditView.html",

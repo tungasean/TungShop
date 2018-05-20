@@ -39,7 +39,7 @@ namespace TungShop.Web.App_Start
             {
                 TokenEndpointPath = new PathString("/oauth/token"),
                 Provider = new AuthorizationServerProvider(),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(120),
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
                 AllowInsecureHttp = true,
 
             });
